@@ -1,0 +1,33 @@
+{
+    "epressingApp": {
+        "commande" : {
+            "home": {
+                "title": "Commandes",
+                "createLabel": "Create a new Commande",
+                "createOrEditLabel": "Create or edit a Commande",
+                "search": "Search for Commande"
+            },
+            "created": "A new Commande is created with identifier {{ param }}",
+            "updated": "A Commande is updated with identifier {{ param }}",
+            "deleted": "A Commande is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Commande {{ id }}?"
+            },
+            "detail": {
+                "title": "Commande"
+            },
+            "dateCommande": "Date Commande",
+            "dateFacture": "Date Facture",
+            "dateFacturation": "Date Facturation",
+            "dateCueillette": "Date Cueillette",
+            "dateLivraison": "Date Livraison",
+            "netAPayer": "Net A Payer",
+            "etat": "Etat",
+            "adresseCueillette": "Adresse Cueillette",
+            "adresseLivraison": "Adresse Livraison",
+            "adresseFacturation": "Adresse Facturation",
+            "carteBancaire": "Carte Bancaire",
+            "client": "Client"
+        }
+    }
+}

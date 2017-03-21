@@ -1,0 +1,85 @@
+<div>
+    <h2 data-translate="epressingApp.carteBancaire.home.title">Carte Bancaires</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="carte-bancaire.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="epressingApp.carteBancaire.home.createLabel">
+                        Create new Carte Bancaire
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'epressingApp.carteBancaire.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numero"><span data-translate="epressingApp.carteBancaire.numero">Numero</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="codeHVC"><span data-translate="epressingApp.carteBancaire.codeHVC">Code HVC</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateExpiration"><span data-translate="epressingApp.carteBancaire.dateExpiration">Date Expiration</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="utilisateur.id"><span data-translate="epressingApp.carteBancaire.utilisateur">Utilisateur</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="carteBancaire in vm.carteBancaires track by carteBancaire.id">
+                    <td><a ui-sref="carte-bancaire-detail({id:carteBancaire.id})">{{carteBancaire.id}}</a></td>
+                    <td>{{carteBancaire.numero}}</td>
+                    <td>{{carteBancaire.codeHVC}}</td>
+                    <td>{{carteBancaire.dateExpiration | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="utilisateur-detail({id:carteBancaire.utilisateur.id})">{{carteBancaire.utilisateur.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="carte-bancaire-detail({id:carteBancaire.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="carte-bancaire.edit({id:carteBancaire.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="carte-bancaire.delete({id:carteBancaire.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

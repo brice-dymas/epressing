@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="epressingApp.carteBancaire.detail.title">Carte Bancaire</span> {{vm.carteBancaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="epressingApp.carteBancaire.numero">Numero</span></dt>
+        <dd>
+            <span>{{vm.carteBancaire.numero}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.carteBancaire.codeHVC">Code HVC</span></dt>
+        <dd>
+            <span>{{vm.carteBancaire.codeHVC}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.carteBancaire.dateExpiration">Date Expiration</span></dt>
+        <dd>
+            <span>{{vm.carteBancaire.dateExpiration | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.carteBancaire.utilisateur">Utilisateur</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.carteBancaire.utilisateur.id})">{{vm.carteBancaire.utilisateur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="carte-bancaire-detail.edit({id:vm.carteBancaire.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

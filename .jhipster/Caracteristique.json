@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "couleur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "marque",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170321170421",
+    "entityTableName": "caracteristique",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

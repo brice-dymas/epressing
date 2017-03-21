@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "carteBancaire",
+            "otherEntityName": "carteBancaire",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "client",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateCommande",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateFacture",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateFacturation",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateCueillette",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateLivraison",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "netAPayer",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresseCueillette",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adresseLivraison",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adresseFacturation",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170321170421",
+    "entityTableName": "commande",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,88 @@
+entity Operation{
+	libelle String required
+    description String
+}
+entity Categorie{
+	libelle String required
+}
+entity Produit{
+	libelle String required required
+    photo Blob
+}
+entity Tarif{
+	montant BigDecimal required
+}
+entity TypeUtilisateur{
+	libelle String required
+}
+entity LigneCommande{
+	quantite Integer required
+    etat String required
+}
+entity Caracteristique{
+	couleur String required
+    marque String required
+    libelle String
+}
+entity Utilisateur{
+	nom String required
+    prenom String required
+    adresse String required
+    telephone String required
+    email String
+}
+entity Commande{
+	dateCommande ZonedDateTime
+    dateFacture ZonedDateTime
+    dateFacturation ZonedDateTime
+    dateCueillette ZonedDateTime required
+    dateLivraison ZonedDateTime required
+    netAPayer BigDecimal
+    etat String
+    adresseCueillette String required
+    adresseLivraison String required
+    adresseFacturation String
+}
+entity CarteBancaire{
+	numero String required
+    codeHVC String required
+    dateExpiration ZonedDateTime required
+}
+relationship ManyToOne{
+	Produit{categorie} to Categorie
+}
+relationship ManyToOne{
+	Tarif{operation} to Operation
+}
+relationship ManyToOne{
+	Tarif{produit} to Produit
+}
+relationship ManyToOne{
+	LigneCommande{produit} to Produit
+}
+relationship ManyToOne{
+	LigneCommande{commande} to Commande
+}
+relationship ManyToOne{
+	LigneCommande{operation} to Operation	
+}
+relationship ManyToOne{
+	LigneCommande{caracteristique} to Caracteristique	
+}
+relationship ManyToOne{
+	Commande{carteBancaire} to CarteBancaire
+}
+relationship ManyToOne{
+	Commande{client} to Utilisateur
+}
+relationship ManyToOne{
+	Utilisateur{type} to TypeUtilisateur
+}
+relationship ManyToOne{
+	CarteBancaire{utilisateur} to Utilisateur
+}
+relationship OneToOne{
+	Utilisateur{user} to User
+}
+paginate all with pagination
+service all with serviceImpl

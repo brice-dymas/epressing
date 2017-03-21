@@ -1,0 +1,92 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUtilisateurLabel" data-translate="epressingApp.utilisateur.home.createOrEditLabel">Create or edit a Utilisateur</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.utilisateur.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.utilisateur.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.utilisateur.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.utilisateur.nom"
+                    required/>
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.utilisateur.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                    ng-model="vm.utilisateur.prenom"
+                    required/>
+            <div ng-show="editForm.prenom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.prenom.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.utilisateur.adresse" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                    ng-model="vm.utilisateur.adresse"
+                    required/>
+            <div ng-show="editForm.adresse.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.adresse.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.utilisateur.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                    ng-model="vm.utilisateur.telephone"
+                    required/>
+            <div ng-show="editForm.telephone.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.telephone.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.utilisateur.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.utilisateur.email"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="epressingApp.utilisateur.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.utilisateur.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="epressingApp.utilisateur.type" for="field_type">Type</label>
+            <select class="form-control" id="field_type" name="type" ng-model="vm.utilisateur.type" ng-options="typeUtilisateur as typeUtilisateur.id for typeUtilisateur in vm.typeutilisateurs track by typeUtilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

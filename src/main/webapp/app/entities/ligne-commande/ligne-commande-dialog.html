@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLigneCommandeLabel" data-translate="epressingApp.ligneCommande.home.createOrEditLabel">Create or edit a Ligne Commande</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.ligneCommande.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.ligneCommande.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.ligneCommande.quantite" for="field_quantite">Quantite</label>
+            <input type="number" class="form-control" name="quantite" id="field_quantite"
+                    ng-model="vm.ligneCommande.quantite"
+                    required/>
+            <div ng-show="editForm.quantite.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.quantite.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.quantite.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.ligneCommande.etat" for="field_etat">Etat</label>
+            <input type="text" class="form-control" name="etat" id="field_etat"
+                    ng-model="vm.ligneCommande.etat"
+                    required/>
+            <div ng-show="editForm.etat.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.etat.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="epressingApp.ligneCommande.produit" for="field_produit">Produit</label>
+            <select class="form-control" id="field_produit" name="produit" ng-model="vm.ligneCommande.produit" ng-options="produit as produit.id for produit in vm.produits track by produit.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="epressingApp.ligneCommande.commande" for="field_commande">Commande</label>
+            <select class="form-control" id="field_commande" name="commande" ng-model="vm.ligneCommande.commande" ng-options="commande as commande.id for commande in vm.commandes track by commande.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="epressingApp.ligneCommande.operation" for="field_operation">Operation</label>
+            <select class="form-control" id="field_operation" name="operation" ng-model="vm.ligneCommande.operation" ng-options="operation as operation.id for operation in vm.operations track by operation.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="epressingApp.ligneCommande.caracteristique" for="field_caracteristique">Caracteristique</label>
+            <select class="form-control" id="field_caracteristique" name="caracteristique" ng-model="vm.ligneCommande.caracteristique" ng-options="caracteristique as caracteristique.id for caracteristique in vm.caracteristiques track by caracteristique.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

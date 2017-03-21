@@ -1,0 +1,22 @@
+{
+    "epressingApp": {
+        "typeUtilisateur" : {
+            "home": {
+                "title": "Type Utilisateurs",
+                "createLabel": "Create a new Type Utilisateur",
+                "createOrEditLabel": "Create or edit a Type Utilisateur",
+                "search": "Search for Type Utilisateur"
+            },
+            "created": "A new Type Utilisateur is created with identifier {{ param }}",
+            "updated": "A Type Utilisateur is updated with identifier {{ param }}",
+            "deleted": "A Type Utilisateur is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Utilisateur {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Utilisateur"
+            },
+            "libelle": "Libelle"
+        }
+    }
+}

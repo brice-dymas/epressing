@@ -1,0 +1,25 @@
+{
+    "epressingApp": {
+        "carteBancaire" : {
+            "home": {
+                "title": "Carte Bancaires",
+                "createLabel": "Create a new Carte Bancaire",
+                "createOrEditLabel": "Create or edit a Carte Bancaire",
+                "search": "Search for Carte Bancaire"
+            },
+            "created": "A new Carte Bancaire is created with identifier {{ param }}",
+            "updated": "A Carte Bancaire is updated with identifier {{ param }}",
+            "deleted": "A Carte Bancaire is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Carte Bancaire {{ id }}?"
+            },
+            "detail": {
+                "title": "Carte Bancaire"
+            },
+            "numero": "Numero",
+            "codeHVC": "Code HVC",
+            "dateExpiration": "Date Expiration",
+            "utilisateur": "Utilisateur"
+        }
+    }
+}

@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span data-translate="epressingApp.commande.detail.title">Commande</span> {{vm.commande.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="epressingApp.commande.dateCommande">Date Commande</span></dt>
+        <dd>
+            <span>{{vm.commande.dateCommande | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.dateFacture">Date Facture</span></dt>
+        <dd>
+            <span>{{vm.commande.dateFacture | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.dateFacturation">Date Facturation</span></dt>
+        <dd>
+            <span>{{vm.commande.dateFacturation | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.dateCueillette">Date Cueillette</span></dt>
+        <dd>
+            <span>{{vm.commande.dateCueillette | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span></dt>
+        <dd>
+            <span>{{vm.commande.dateLivraison | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.netAPayer">Net A Payer</span></dt>
+        <dd>
+            <span>{{vm.commande.netAPayer}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.etat">Etat</span></dt>
+        <dd>
+            <span>{{vm.commande.etat}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span></dt>
+        <dd>
+            <span>{{vm.commande.adresseCueillette}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span></dt>
+        <dd>
+            <span>{{vm.commande.adresseLivraison}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.adresseFacturation">Adresse Facturation</span></dt>
+        <dd>
+            <span>{{vm.commande.adresseFacturation}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.carteBancaire">Carte Bancaire</span></dt>
+        <dd>
+            <a ui-sref="carte-bancaire-detail({id:vm.commande.carteBancaire.id})">{{vm.commande.carteBancaire.id}}</a>
+        </dd>
+        <dt><span data-translate="epressingApp.commande.client">Client</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.commande.client.id})">{{vm.commande.client.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="commande-detail.edit({id:vm.commande.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

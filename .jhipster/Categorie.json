@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170321170421",
+    "entityTableName": "categorie",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="epressingApp.utilisateur.detail.title">Utilisateur</span> {{vm.utilisateur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="epressingApp.utilisateur.nom">Nom</span></dt>
+        <dd>
+            <span>{{vm.utilisateur.nom}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{vm.utilisateur.prenom}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.adresse">Adresse</span></dt>
+        <dd>
+            <span>{{vm.utilisateur.adresse}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.telephone">Telephone</span></dt>
+        <dd>
+            <span>{{vm.utilisateur.telephone}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.email">Email</span></dt>
+        <dd>
+            <span>{{vm.utilisateur.email}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.user">User</span></dt>
+        <dd>
+            {{vm.utilisateur.user.id}}
+        </dd>
+        <dt><span data-translate="epressingApp.utilisateur.type">Type</span></dt>
+        <dd>
+            <a ui-sref="type-utilisateur-detail({id:vm.utilisateur.type.id})">{{vm.utilisateur.type.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="utilisateur-detail.edit({id:vm.utilisateur.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

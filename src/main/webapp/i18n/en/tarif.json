@@ -1,0 +1,24 @@
+{
+    "epressingApp": {
+        "tarif" : {
+            "home": {
+                "title": "Tarifs",
+                "createLabel": "Create a new Tarif",
+                "createOrEditLabel": "Create or edit a Tarif",
+                "search": "Search for Tarif"
+            },
+            "created": "A new Tarif is created with identifier {{ param }}",
+            "updated": "A Tarif is updated with identifier {{ param }}",
+            "deleted": "A Tarif is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tarif {{ id }}?"
+            },
+            "detail": {
+                "title": "Tarif"
+            },
+            "montant": "Montant",
+            "operation": "Operation",
+            "produit": "Produit"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="epressingApp.tarif.detail.title">Tarif</span> {{vm.tarif.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="epressingApp.tarif.montant">Montant</span></dt>
+        <dd>
+            <span>{{vm.tarif.montant}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.tarif.operation">Operation</span></dt>
+        <dd>
+            <a ui-sref="operation-detail({id:vm.tarif.operation.id})">{{vm.tarif.operation.id}}</a>
+        </dd>
+        <dt><span data-translate="epressingApp.tarif.produit">Produit</span></dt>
+        <dd>
+            <a ui-sref="produit-detail({id:vm.tarif.produit.id})">{{vm.tarif.produit.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tarif-detail.edit({id:vm.tarif.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

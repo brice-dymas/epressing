@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="epressingApp.ligneCommande.detail.title">Ligne Commande</span> {{vm.ligneCommande.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="epressingApp.ligneCommande.quantite">Quantite</span></dt>
+        <dd>
+            <span>{{vm.ligneCommande.quantite}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.ligneCommande.etat">Etat</span></dt>
+        <dd>
+            <span>{{vm.ligneCommande.etat}}</span>
+        </dd>
+        <dt><span data-translate="epressingApp.ligneCommande.produit">Produit</span></dt>
+        <dd>
+            <a ui-sref="produit-detail({id:vm.ligneCommande.produit.id})">{{vm.ligneCommande.produit.id}}</a>
+        </dd>
+        <dt><span data-translate="epressingApp.ligneCommande.commande">Commande</span></dt>
+        <dd>
+            <a ui-sref="commande-detail({id:vm.ligneCommande.commande.id})">{{vm.ligneCommande.commande.id}}</a>
+        </dd>
+        <dt><span data-translate="epressingApp.ligneCommande.operation">Operation</span></dt>
+        <dd>
+            <a ui-sref="operation-detail({id:vm.ligneCommande.operation.id})">{{vm.ligneCommande.operation.id}}</a>
+        </dd>
+        <dt><span data-translate="epressingApp.ligneCommande.caracteristique">Caracteristique</span></dt>
+        <dd>
+            <a ui-sref="caracteristique-detail({id:vm.ligneCommande.caracteristique.id})">{{vm.ligneCommande.caracteristique.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ligne-commande-detail.edit({id:vm.ligneCommande.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

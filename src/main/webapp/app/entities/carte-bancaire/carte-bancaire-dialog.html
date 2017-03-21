@@ -1,0 +1,76 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCarteBancaireLabel" data-translate="epressingApp.carteBancaire.home.createOrEditLabel">Create or edit a Carte Bancaire</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.carteBancaire.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.carteBancaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.carteBancaire.numero" for="field_numero">Numero</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.carteBancaire.numero"
+                    required/>
+            <div ng-show="editForm.numero.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numero.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.carteBancaire.codeHVC" for="field_codeHVC">Code HVC</label>
+            <input type="text" class="form-control" name="codeHVC" id="field_codeHVC"
+                    ng-model="vm.carteBancaire.codeHVC"
+                    required/>
+            <div ng-show="editForm.codeHVC.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.codeHVC.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="epressingApp.carteBancaire.dateExpiration" for="field_dateExpiration">Date Expiration</label>
+                <div class="input-group">
+                    <input id="field_dateExpiration" type="text" class="form-control" name="dateExpiration" datetime-picker="{{dateformat}}" ng-model="vm.carteBancaire.dateExpiration" is-open="vm.datePickerOpenStatus.dateExpiration"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateExpiration')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateExpiration.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateExpiration.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateExpiration.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="epressingApp.carteBancaire.utilisateur" for="field_utilisateur">Utilisateur</label>
+            <select class="form-control" id="field_utilisateur" name="utilisateur" ng-model="vm.carteBancaire.utilisateur" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

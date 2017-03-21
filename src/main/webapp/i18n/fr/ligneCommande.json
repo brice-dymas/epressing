@@ -1,0 +1,27 @@
+{
+    "epressingApp": {
+        "ligneCommande" : {
+            "home": {
+                "title": "LigneCommandes",
+                "createLabel": "Créer un nouveau Ligne Commande",
+                "createOrEditLabel": "Créer ou éditer un Ligne Commande",
+                "search": "Recherche pour Ligne Commande"
+            },
+            "created": "Un nouveau Ligne Commande a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ligne Commande avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ligne Commande avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ligne Commande {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ligne Commande"
+            },
+            "quantite": "Quantite",
+            "etat": "Etat",
+            "produit": "Produit",
+            "commande": "Commande",
+            "operation": "Operation",
+            "caracteristique": "Caracteristique"
+        }
+    }
+}
