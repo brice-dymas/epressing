@@ -3,24 +3,39 @@
     <h2><span data-translate="epressingApp.produit.detail.title">Produit</span> {{vm.produit.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.produit.libelle">Libelle</span></dt>
-        <dd>
-            <span>{{vm.produit.libelle}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.produit.photo">Photo</span></dt>
-        <dd>
-            <div ng-if="vm.produit.photo">
-                <a ng-click="vm.openFile(vm.produit.photoContentType, vm.produit.photo)" data-translate="entity.action.open">open</a>
-                {{vm.produit.photoContentType}}, {{vm.byteSize(vm.produit.photo)}}
-            </div>
-        </dd>
-        <dt><span data-translate="epressingApp.produit.categorie">Categorie</span></dt>
-        <dd>
-            <a ui-sref="categorie-detail({id:vm.produit.categorie.id})">{{vm.produit.categorie.id}}</a>
-        </dd>
-    </dl>
-
+    <div class="row">
+        <div class="col-md-6">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <span data-translate="epressingApp.produit.photo">Photo</span>            
+                <div ng-if="vm.produit.photo">
+                <a ng-click="vm.openFile(vm.produit.photoContentType, vm.produit.photo)">
+                    <img data-ng-src="{{'data:' + vm.produit.photoContentType + ';base64,' + vm.produit.photo}}" style="max-width: 50%;"/>
+                </a>
+                </div>
+            </td>
+        </tr>
+    </table>    
+        </div>
+        <div class="col-md-4">
+    <table class="table table-condensed">
+        <tr>
+            <td><span data-translate="epressingApp.produit.libelle">Libelle</span></td>
+            <td><span>{{vm.produit.libelle}}</span></td>
+        </tr>
+        <tr>
+            <td>
+                <span data-translate="epressingApp.produit.categorie">Categorie</span>
+            </td>
+            <td>
+                <a ui-sref="categorie-detail({id:vm.produit.categorie.id})">{{vm.produit.categorie.libelle}}</a>
+            </td>
+        </tr>        
+    </table>
+        </div>
+        
+    </div>
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">

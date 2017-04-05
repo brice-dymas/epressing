@@ -3,12 +3,16 @@
     <h2><span data-translate="epressingApp.typeUtilisateur.detail.title">Type Utilisateur</span> {{vm.typeUtilisateur.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.typeUtilisateur.libelle">Libelle</span></dt>
-        <dd>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <b>
+            <span data-translate="epressingApp.typeUtilisateur.libelle">Libelle</span>
+            </b>
+        </div>
+        <div class="col-md-2 col-md-offset-0">
             <span>{{vm.typeUtilisateur.libelle}}</span>
-        </dd>
-    </dl>
+        </div>
+    </div>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"

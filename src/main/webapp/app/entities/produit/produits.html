@@ -51,22 +51,21 @@
                         <span ng-if="produit.photo">{{produit.photoContentType}}, {{vm.byteSize(produit.photo)}}</span>
                     </td>
                     <td>
-                        <a ui-sref="categorie-detail({id:produit.categorie.id})">{{produit.categorie.id}}</a>
+                        <a ui-sref="categorie-detail({id:produit.categorie.id})">{{produit.categorie.libelle}}</a>
                     </td>
-                    <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
+                    <td class="text-right">                       
                             <button type="submit"
                                     ui-sref="produit-detail({id:produit.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                            </button>
+                            </button> &nbsp
                             <button type="submit"
                                     ui-sref="produit.edit({id:produit.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
-                            </button>
+                            </button> &nbsp
                             <button type="submit"
                                     ui-sref="produit.delete({id:produit.id})"
                                     class="btn btn-danger btn-sm">
