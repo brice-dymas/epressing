@@ -1,5 +1,17 @@
 {
     "epressingApp": {
+        "cart": {
+            "title" : "Items in my Cart",
+            "newItem" : "Add an item to my cart",
+            "produit" : "Item",
+            "categorie" : "Category",
+            "operation" : "Service desired",
+            "tarif" : "Tariff",
+            "checkout": "Check-out",
+            "caracteristique": {
+                "marque" : "Brand",
+                "couleur" : "Color"
+            }},
         "commande" : {
             "home": {
                 "title": "Commandes",

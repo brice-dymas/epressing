@@ -5,7 +5,8 @@
                 "title": "Produits",
                 "createLabel": "Create a new Produit",
                 "createOrEditLabel": "Create or edit a Produit",
-                "search": "Search for Produit"
+                "search": "Search for Produit",
+                "addToCart": "Add to Cart"
             },
             "created": "A new Produit is created with identifier {{ param }}",
             "updated": "A Produit is updated with identifier {{ param }}",
@@ -15,6 +16,18 @@
             },
             "detail": {
                 "title": "Produit"
+            },
+            "addToCart": {
+                "title": "Adding Items to Cart",
+                "operation": "Service desired",
+                "quantite": "Quantity",
+                "etat": "Item State",
+                "tarif": "Unit Price",
+                "caracteristique":{
+                   "couleur": "clothe color",
+                    "marque": "Brand",
+                    "libelle": "Remarks"
+                }
             },
             "libelle": "Libelle",
             "photo": "Photo",

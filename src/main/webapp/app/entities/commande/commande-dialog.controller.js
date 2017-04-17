@@ -5,18 +5,31 @@
         .module('epressingApp')
         .controller('CommandeDialogController', CommandeDialogController);
 
-    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur'];
+    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope'];
 
-    function CommandeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Commande, CarteBancaire, Utilisateur) {
+    function CommandeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Commande, CarteBancaire, Utilisateur,$rootScope) {
         var vm = this;
 
-        vm.commande = entity;
+        vm.commande = entity; 
+        vm.lignesCommandes = $rootScope.lignesCommandes;
+        vm.total = total;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.cartebancaires = CarteBancaire.query();
         vm.utilisateurs = Utilisateur.query();
+        //alert('MOntant Total = '+vm.total());
+        console.log('MOntant Total = '+vm.total());
+        vm.commande.netAPayer = vm.total();
+
+        function total () {
+            var resultat = 0;
+            for (var i = 0; i < vm.lignesCommandes.length; i++) {
+                resultat= resultat + vm.lignesCommandes[i].tarif;            
+            }
+            return resultat;
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

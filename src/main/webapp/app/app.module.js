@@ -20,10 +20,28 @@
         ])
         .run(run);
 
-    run.$inject = ['stateHandler', 'translationHandler'];
+    run.$inject = ['stateHandler', 'translationHandler','$rootScope'];
 
-    function run(stateHandler, translationHandler) {
+    function run(stateHandler, translationHandler,$rootScope) {
         stateHandler.initialize();
-        translationHandler.initialize();
+        translationHandler.initialize();  
+        console.log('execution de $rootScope.lignesCommandes = []; ')  
+        $rootScope.lignesCommandes = [];
+        console.log('Intruction $rootScope.lignesCommandes = []; executée')  
+        $rootScope.maCommande = {
+                'id': null,
+                'dateCommande': new Date() ,
+                'dateFacture': null,
+                'dateFacturation': null,
+                'dateCueillette': null,
+                'dateLivraison': null,
+                'netAPayer': 0,
+                'etat': 'En Attente',
+                'adresseCueillette': null,
+                'adresseLivraison': null,
+                'adresseFacturation': null,
+                'carteBancaire': null,
+                'client': null
+            };
     }
 })();

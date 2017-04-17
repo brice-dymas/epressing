@@ -47,10 +47,10 @@
                     <td><a ui-sref="tarif-detail({id:tarif.id})">{{tarif.id}}</a></td>
                     <td>{{tarif.montant}}</td>
                     <td>
-                        <a ui-sref="operation-detail({id:tarif.operation.id})">{{tarif.operation.id}}</a>
+                        <a ui-sref="operation-detail({id:tarif.operation.id})">{{tarif.operation.libelle}}</a>
                     </td>
                     <td>
-                        <a ui-sref="produit-detail({id:tarif.produit.id})">{{tarif.produit.id}}</a>
+                        <a ui-sref="produit-detail({id:tarif.produit.id})">{{tarif.produit.libelle}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

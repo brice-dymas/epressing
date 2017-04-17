@@ -1,13 +1,12 @@
 (function() {
-    'use strict';
+    'use strict'; 
 
     angular
         .module('epressingApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
-
-    function stateConfig($stateProvider) {
+    function stateConfig($stateProvider,$rootScope) {
         $stateProvider
         .state('produit', {
             parent: 'entity',
@@ -130,6 +129,66 @@
                                 id: null
                             };
                         }
+                    }
+                }).result.then(function() {
+                    $state.go('produit', null, { reload: 'produit' });
+                }, function() {
+                    $state.go('produit');
+                });
+            }]
+        })
+        .state('produit.addToCart', {
+            parent: 'produit',
+            url: '/addToCart/{id}',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal','$rootScope', function($stateParams, $state, $uibModal,$rootScope) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/produit/produit-addToCart.html',
+                    controller: 'ProduitAddToCartController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                id: null,
+                                quantite: null,
+                                etat: null,
+                                tarif: 0,
+                                produit: {
+                                    id:null,
+                                    libelle:null,
+                                    photo:null
+                                },
+                                commande: {
+                                    id:null,
+                                    dateCommande:null,
+                                    dateFacture:null,
+                                    dateFacturation:null,
+                                    dateCueillette:null,
+                                    dateLivraison:null,
+                                    netAPayer:null,
+                                    etat: 'En attente',
+                                    adresseCueillette:null,
+                                    adresseLivraison:null,
+                                    adresseFacturation:null
+                                },
+                                operation:{ 
+                                    id:null,
+                                    libelle: null,
+                                    description: null
+                                },
+                                caracteristique: {
+                                    id: null,
+                                    couleur: null,
+                                    marque: null,
+                                    libelle: null
+                                }
+                            };
+                        },
+                        
                     }
                 }).result.then(function() {
                     $state.go('produit', null, { reload: 'produit' });

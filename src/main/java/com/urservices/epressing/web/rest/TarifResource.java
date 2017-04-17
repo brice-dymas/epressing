@@ -115,7 +115,18 @@ public class TarifResource {
         Tarif tarif = tarifService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tarif));
     }
-
+    /**
+     * GET /tarifs/operation/:idOperation/produit/:idProduit
+     */
+    @GetMapping("/tarifs/operation/{idOperation}/produit/{idProduit]")
+    @Timed
+    public ResponseEntity<Tarif> getTarifByOperationAndProduct(@PathVariable Long idOperation, @PathVariable Long idProduit) {
+        log.debug("REST request to get Tarif  of Operation : {} and Product : {}", idOperation, idProduit);
+        Tarif tarif = tarifService.findByOperationAndProduct(idOperation, idProduit);
+        System.out.println("le Tarif trouvé a pour ID " + tarif.getId() );
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tarif));
+    }
+    
     /**
      * DELETE  /tarifs/:id : delete the "id" tarif.
      *

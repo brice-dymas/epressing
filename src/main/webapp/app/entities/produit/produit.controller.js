@@ -5,12 +5,13 @@
         .module('epressingApp')
         .controller('ProduitController', ProduitController);
 
-    ProduitController.$inject = ['$state', 'DataUtils', 'Produit', 'ProduitSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ProduitController.$inject = ['$state', 'DataUtils', 'Produit', 'ProduitSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$rootScope'];
 
-    function ProduitController($state, DataUtils, Produit, ProduitSearch, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ProduitController($state, DataUtils, Produit, ProduitSearch, ParseLinks, AlertService, paginationConstants, pagingParams,$rootScope) {
 
         var vm = this;
 
+        vm.lignesCommandes = $rootScope.lignesCommandes;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -22,10 +23,8 @@
         vm.searchQuery = pagingParams.search;
         vm.currentSearch = pagingParams.search;
         vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
-
-        loadAll();
-
+        vm.byteSize = DataUtils.byteSize;        
+        loadAll();        
         function loadAll () {
             if (pagingParams.search) {
                 ProduitSearch.query({

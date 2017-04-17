@@ -76,7 +76,14 @@ public class TarifServiceImpl implements TarifService{
         Tarif tarif = tarifRepository.findOne(id);
         return tarif;
     }
-
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Tarif findByOperationAndProduct(Long idOperation, Long idProduit){
+        log.debug("Request to get Tarif of Produit : {} for Operation : {]", idProduit, idOperation);
+        Tarif tarif = tarifRepository.findByOperationAndProduct(idOperation, idProduit);
+        return tarif;
+    }
     /**
      *  Delete the  tarif by id.
      *

@@ -27,6 +27,7 @@
                     $translatePartialLoader.addPart('global');
                 }]
             }
-        });
+        }
+        );
     }
 })();

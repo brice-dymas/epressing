@@ -49,7 +49,7 @@
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
-            }
+            } 
         })
         .state('commande-detail', {
             parent: 'commande',
@@ -124,13 +124,13 @@
                     resolve: {
                         entity: function () {
                             return {
-                                dateCommande: null,
+                                dateCommande: new Date(),
                                 dateFacture: null,
                                 dateFacturation: null,
                                 dateCueillette: null,
                                 dateLivraison: null,
-                                netAPayer: null,
-                                etat: null,
+                                netAPayer: 0,
+                                etat: 'En attente de cueillette',
                                 adresseCueillette: null,
                                 adresseLivraison: null,
                                 adresseFacturation: null,
