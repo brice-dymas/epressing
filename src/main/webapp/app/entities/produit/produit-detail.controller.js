@@ -13,7 +13,7 @@
         vm.produit = entity;
         vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
+        vm.openFile = DataUtils.openFile; 
 
         var unsubscribe = $rootScope.$on('epressingApp:produitUpdate', function(event, result) {
             vm.produit = result;

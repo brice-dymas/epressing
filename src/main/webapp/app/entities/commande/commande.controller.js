@@ -5,11 +5,11 @@
         .module('epressingApp')
         .controller('CommandeController', CommandeController);
 
-    CommandeController.$inject = ['$state', 'Commande', 'CommandeSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    CommandeController.$inject = ['$state', 'Commande', 'CommandeSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','$rootScope'];
 
-    function CommandeController($state, Commande, CommandeSearch, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function CommandeController($state, Commande, CommandeSearch, ParseLinks, AlertService, paginationConstants, pagingParams,$rootScope) {
 
-        var vm = this;
+        var vm = this; 
 
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;

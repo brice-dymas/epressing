@@ -13,6 +13,23 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.tarif.id" readonly />
         </div>
+        <div class="col-md-4">
+        <div class="form-group">
+            <label data-translate="epressingApp.tarif.produit" for="field_produit">Produit</label>
+            <select class="form-control" id="field_produit" name="produit" ng-model="vm.tarif.produit" ng-options="produit as produit.libelle for produit in vm.produits track by produit.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="form-group">
+            <label data-translate="epressingApp.tarif.operation" for="field_operation">Operation</label>
+            <select class="form-control" id="field_operation" name="operation" ng-model="vm.tarif.operation" ng-options="operation as operation.libelle for operation in vm.operations track by operation.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        </div>
+        <div class="col-md-4">
         <div class="form-group">
             <label class="control-label" data-translate="epressingApp.tarif.montant" for="field_montant">Montant</label>
             <input type="number" class="form-control" name="montant" id="field_montant"
@@ -29,19 +46,8 @@
                 </p>
             </div>
         </div>
-
-        <div class="form-group">
-            <label data-translate="epressingApp.tarif.operation" for="field_operation">Operation</label>
-            <select class="form-control" id="field_operation" name="operation" ng-model="vm.tarif.operation" ng-options="operation as operation.id for operation in vm.operations track by operation.id">
-                <option value=""></option>
-            </select>
         </div>
-        <div class="form-group">
-            <label data-translate="epressingApp.tarif.produit" for="field_produit">Produit</label>
-            <select class="form-control" id="field_produit" name="produit" ng-model="vm.tarif.produit" ng-options="produit as produit.id for produit in vm.produits track by produit.id">
-                <option value=""></option>
-            </select>
-        </div>
+        
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

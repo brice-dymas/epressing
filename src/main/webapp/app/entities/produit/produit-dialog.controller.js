@@ -13,7 +13,7 @@
         vm.produit = entity;
         vm.clear = clear;
         vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
+        vm.openFile = DataUtils.openFile; 
         vm.save = save;
         vm.categories = Categorie.query();
 

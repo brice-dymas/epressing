@@ -3,20 +3,26 @@
     <h2><span data-translate="epressingApp.caracteristique.detail.title">Caracteristique</span> {{vm.caracteristique.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.caracteristique.couleur">Couleur</span></dt>
-        <dd>
+    <table class="table table-hover">
+        <tr>
+            <td><span data-translate="epressingApp.caracteristique.couleur">Couleur</span></td>
+        <td>
             <span>{{vm.caracteristique.couleur}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.caracteristique.marque">Marque</span></dt>
-        <dd>
+        </td>   
+        </tr>    
+        <tr>
+        <td><span data-translate="epressingApp.caracteristique.marque">Marque</span></td>
+        <td>
             <span>{{vm.caracteristique.marque}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.caracteristique.libelle">Libelle</span></dt>
-        <dd>
+        </td>
+        </tr>
+        <tr>
+        <td><span data-translate="epressingApp.caracteristique.libelle">Libelle</span></td>
+        <td>
             <span>{{vm.caracteristique.libelle}}</span>
-        </dd>
-    </dl>
+        </td>
+        </tr>
+    </table>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"

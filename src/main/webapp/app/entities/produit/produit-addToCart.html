@@ -1,0 +1,71 @@
+
+<form name="addToCartForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProduitLabel" data-translate="epressingApp.produit.home.addToCart">Add Item to Cart</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="hidden" ng-show="vm.produit.id">
+            <label for="id" data-translate="global.field.id">ID</label> 
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.ligneCommande.produit.id" readonly />
+        </div>       
+            <div class="row">
+                 <div class="col-md-4" >
+                        <span data-translate="epressingApp.produit.libelle">Libelle</span>
+                        <span><input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.produit.libelle"
+                        readonly/></span>
+                    </div> 
+                <div class="col-md-4">
+                    <span data-translate="epressingApp.produit.categorie">Categorie</span>
+                     <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.produit.categorie.libelle"
+                        readonly/>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label data-translate="epressingApp.produit.addToCart.operation" for="field_operation">Operations</label>
+                        <select class="form-control" id="field_operation" name="operation" ng-model="vm.ligneCommande.operation" ng-options="operation as operation.libelle for operation in vm.operations track by operation.id" required>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                                                             
+            </div>
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <span data-translate="epressingApp.produit.addToCart.caracteristique.couleur">Couleur</span>
+                     <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.caracteristique.couleur"
+                        required/>
+                </div>
+                <div class="col-md-4">
+                    <span data-translate="epressingApp.produit.addToCart.caracteristique.marque">Marque</span>
+                     <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.caracteristique.marque"
+                        required/>
+                </div>
+                <div class="col-md-4">
+                    <span data-translate="epressingApp.produit.addToCart.caracteristique.libelle">Détails</span>
+                     <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.caracteristique.libelle"
+                        />
+                </div>
+            </div>
+     
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="addToCartForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

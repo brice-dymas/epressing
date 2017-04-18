@@ -5,7 +5,8 @@
                 "title": "Produits",
                 "createLabel": "Créer un nouveau Produit",
                 "createOrEditLabel": "Créer ou éditer un Produit",
-                "search": "Recherche pour Produit"
+                "search": "Recherche pour Produit",
+                "addToCart": "Ajouter au Panier"
             },
             "created": "Un nouveau Produit a été créé avec l'identifiant {{ param }}",
             "updated": "Le Produit avec l'identifiant {{ param }} a été mis à jour",
@@ -15,6 +16,18 @@
             },
             "detail": {
                 "title": "Produit"
+            },
+            "addToCart": {
+                "title": "Ajouter des éléments dans mon Panier",
+                "operation": "Service désiré",
+                "quantite": "Quantité",
+                "etat": "État du vêtement",
+                "tarif": "Prix Unitaire",
+                "caracteristique":{
+                   "couleur": "Couleur du Vêtement",
+                    "marque": "Marque",
+                    "libelle": "Détails"
+                }
             },
             "libelle": "Libelle",
             "photo": "Photo",

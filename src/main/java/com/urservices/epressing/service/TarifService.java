@@ -34,6 +34,8 @@ public interface TarifService {
      */
     Tarif findOne(Long id);
 
+    Tarif findByOperationAndProduct(Long idOperation, Long idProduit);
+
     /**
      *  Delete the "id" tarif.
      *

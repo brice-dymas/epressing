@@ -15,6 +15,12 @@
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
                 <li ui-sref-active="active">
+                    <a ui-sref="cart-list" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="label label-warning"> {{$root.lignesCommandes.length}}</span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
                     <a ui-sref="home" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>

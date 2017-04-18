@@ -12,20 +12,21 @@
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.produit.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="epressingApp.produit.libelle" for="field_libelle">Libelle</label>
-            <input type="text" class="form-control" name="libelle" id="field_libelle"
-                    ng-model="vm.produit.libelle"
-                    required/>
-            <div ng-show="editForm.libelle.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.libelle.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
+        </div>              
+                 <div class="row">
+                     <div class="col-md-6">
+                <label class="control-label" data-translate="epressingApp.produit.libelle" for="field_libelle">Libelle</label>
+                <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.produit.libelle"
+                        required/>
+                <div ng-show="editForm.libelle.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.libelle.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.produit)">
+            <div class="col-md-6" ngf-drop ngf-change="vm.setPhoto($file, vm.produit)">
             <label class="control-label" data-translate="epressingApp.produit.photo" for="field_photo">Photo</label>
             <div>
                 <div ng-if="vm.produit.photo" class="help-block clearfix">
@@ -38,7 +39,7 @@
                 </div>
                 <button type="button" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setPhoto($file, vm.produit)" data-translate="entity.action.addblob">
-                    Add blob
+                    Add Blob
                 </button>
             </div>
             <input type="hidden" class="form-control" name="photo" id="field_photo"
@@ -47,13 +48,17 @@
             <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
                     ng-model="vm.produit.photoContentType" />
         </div>
-
-        <div class="form-group">
+            
+       </div>
+        <div class="row">
+            <div class="col-md-6">
             <label data-translate="epressingApp.produit.categorie" for="field_categorie">Categorie</label>
-            <select class="form-control" id="field_categorie" name="categorie" ng-model="vm.produit.categorie" ng-options="categorie as categorie.id for categorie in vm.categories track by categorie.id">
+            <select class="form-control" id="field_categorie" name="categorie" ng-model="vm.produit.categorie" ng-options="categorie as categorie.libelle for categorie in vm.categories track by categorie.id" required>
                 <option value=""></option>
             </select>
         </div>
+        </div>
+        
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

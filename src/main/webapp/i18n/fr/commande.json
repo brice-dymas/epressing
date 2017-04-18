@@ -1,5 +1,17 @@
 {
     "epressingApp": {
+        "cart": {
+            "title" : "Éléments de mon Panier",
+            "newItem" : "Ajouter au panier",
+            "produit" : "Vêtement",
+            "categorie" : "Categorie",
+            "operation" : "Service désiré",
+            "tarif" : "Prix Unitaire",
+            "checkout": "Passer à la Caisse",
+            "caracteristique": {
+                "marque" : "Marque",
+                "couleur" : "Couleur"
+            }},
         "commande" : {
             "home": {
                 "title": "Commandes",

@@ -13,6 +13,8 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.caracteristique.id" readonly />
         </div>
+        <div class="row">
+            <div class="col-md-5">
         <div class="form-group">
             <label class="control-label" data-translate="epressingApp.caracteristique.couleur" for="field_couleur">Couleur</label>
             <input type="text" class="form-control" name="couleur" id="field_couleur"
@@ -25,6 +27,8 @@
                 </p>
             </div>
         </div>
+            </div>
+            <div class="col-md-5">
         <div class="form-group">
             <label class="control-label" data-translate="epressingApp.caracteristique.marque" for="field_marque">Marque</label>
             <input type="text" class="form-control" name="marque" id="field_marque"
@@ -37,13 +41,18 @@
                 </p>
             </div>
         </div>
+        </div>
+        </div>
+       <div class="row">
+            <div class="col-md-10">
         <div class="form-group">
             <label class="control-label" data-translate="epressingApp.caracteristique.libelle" for="field_libelle">Libelle</label>
             <input type="text" class="form-control" name="libelle" id="field_libelle"
                     ng-model="vm.caracteristique.libelle"
                     />
         </div>
-
+        </div>
+       </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
