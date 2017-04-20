@@ -122,7 +122,7 @@
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: function () {
+                        entity: function () {  
                             return {
                                 dateCommande: new Date(),
                                 dateFacture: null,

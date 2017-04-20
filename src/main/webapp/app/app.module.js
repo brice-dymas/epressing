@@ -25,10 +25,14 @@
     function run(stateHandler, translationHandler,$rootScope) {
         stateHandler.initialize();
         translationHandler.initialize();  
-        console.log('execution de $rootScope.lignesCommandes = []; ')  
-        $rootScope.lignesCommandes = [];
-        console.log('Intruction $rootScope.lignesCommandes = []; executée')  
-        $rootScope.maCommande = {
+       // console.log('execution de $rootScope.lignesCommandes = []; ')  
+        //$rootScope.lignesCommandes = [];
+        console.log('Creation de l\'objet Global commandeForm')  
+        $rootScope.commandeForm = {
+                'commande': null,
+                'lignesCommandes': []
+                /**
+                
                 'id': null,
                 'dateCommande': new Date() ,
                 'dateFacture': null,
@@ -42,6 +46,8 @@
                 'adresseFacturation': null,
                 'carteBancaire': null,
                 'client': null
+                 */
+                
             };
     }
 })();

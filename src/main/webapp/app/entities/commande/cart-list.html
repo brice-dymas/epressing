@@ -26,13 +26,20 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 <tr ng-repeat="ligneCommande in vm.lignesCommandes track by $index ">
                     <td>{{ligneCommande.produit.libelle}}</td>
                     <td>{{ligneCommande.caracteristique.marque}}</td>
                     <td>{{ligneCommande.caracteristique.couleur}}</td>
                     <td>{{ligneCommande.operation.libelle}}</td>
                     <td>{{ligneCommande.tarif}}</td>
+                    <td class="text-right">
+                        <a ng-click="vm.remove({$index})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

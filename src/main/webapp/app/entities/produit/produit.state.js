@@ -152,7 +152,7 @@
                     size: 'lg',
                     resolve: {
                         entity: function () {
-                            return {
+                            return {                            
                                 id: null,
                                 quantite: null,
                                 etat: null,
@@ -162,19 +162,7 @@
                                     libelle:null,
                                     photo:null
                                 },
-                                commande: {
-                                    id:null,
-                                    dateCommande:null,
-                                    dateFacture:null,
-                                    dateFacturation:null,
-                                    dateCueillette:null,
-                                    dateLivraison:null,
-                                    netAPayer:null,
-                                    etat: 'En attente',
-                                    adresseCueillette:null,
-                                    adresseLivraison:null,
-                                    adresseFacturation:null
-                                },
+                                commande: {},
                                 operation:{ 
                                     id:null,
                                     libelle: null,
