@@ -5,13 +5,13 @@
         .module('epressingApp')
         .controller('CommandeDialogController', CommandeDialogController);
 
-    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope'];
+    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope'],'CommandeForm';
 
-    function CommandeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Commande, CarteBancaire, Utilisateur,$rootScope) {
+    function CommandeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Commande, CarteBancaire, Utilisateur,$rootScope, CommandeForm) {
         var vm = this;
 
         vm.commande = entity; 
-        vm.lignesCommandes = $rootScope.lignesCommandes;
+        vm.lignesCommandes = $rootScope.commandeForm.lignesCommandes;
         vm.total = total;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
@@ -19,6 +19,7 @@
         vm.save = save;
         vm.cartebancaires = CarteBancaire.query();
         vm.utilisateurs = Utilisateur.query();
+        vm.maCommandeForm ={};
         //alert('MOntant Total = '+vm.total());
         console.log('MOntant Total = '+vm.total());
         vm.commande.netAPayer = vm.total();
@@ -41,10 +42,16 @@
 
         function save () {
             vm.isSaving = true;
+            console.log('vm.commande: dateCommande: '+vm.commande.dateCommande+' \n dateCueillette: '+vm.commande.dateCueillette
+            +' \n dateFacturation: '+vm.commande.dateFacturation+' \n dateFacture: '+vm.commande.dateFacture
+            +' \n dateLivraison: '+vm.commande.dateLivraison);
+            $scope.commandeForm.commande = vm.commande;
             if (vm.commande.id !== null) {
-                Commande.update(vm.commande, onSaveSuccess, onSaveError);
+                CommandeForm.update($scope.commandeForm, onSaveSuccess, onSaveError);
+                //Commande.update(vm.commande, onSaveSuccess, onSaveError);
             } else {
-                Commande.save(vm.commande, onSaveSuccess, onSaveError);
+                CommandeForm.save($scope.commandeForm, onSaveSuccess, onSaveError);
+                //Commande.save(vm.commande, onSaveSuccess, onSaveError);
             }
         }
 
