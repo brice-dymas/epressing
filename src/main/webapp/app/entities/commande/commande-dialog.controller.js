@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.commande = entity; 
-        vm.lignesCommandes = $rootScope.commandeForm.lignesCommandes;
+        vm.ligneCommandes = $rootScope.commandeForm.ligneCommandes;
         vm.total = total;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
@@ -26,8 +26,8 @@
 
         function total () {
             var resultat = 0;
-            for (var i = 0; i < vm.lignesCommandes.length; i++) {
-                resultat= resultat + vm.lignesCommandes[i].tarif;            
+            for (var i = 0; i < vm.ligneCommandes.length; i++) {
+                resultat= resultat + vm.ligneCommandes[i].tarif;            
             }
             return resultat;
         }
@@ -47,10 +47,15 @@
             +' \n dateLivraison: '+vm.commande.dateLivraison);
             $scope.commandeForm.commande = vm.commande;
             if (vm.commande.id !== null) {
-                CommandeForm.update($scope.commandeForm, onSaveSuccess, onSaveError);
+                alert('Mise a jour non configurée');
+                //CommandeForm.update($scope.commandeForm, onSaveSuccess, onSaveError);
                 //Commande.update(vm.commande, onSaveSuccess, onSaveError);
             } else {
-                CommandeForm.save($scope.commandeForm, onSaveSuccess, onSaveError);
+                console.log('commande is '+$scope.commandeForm.commande.netAPayer);
+                console.log('MOntant commande is '+$scope.commandeForm.commande.netAPayer);
+                alert('Number of Item to save = '+$scope.commandeForm.ligneCommandes.length);
+                $scope.commandeForm.ligneCommandes = $rootScope.commandeForm.ligneCommandes;
+                Commande.saveCommand($scope.commandeForm, onSaveSuccess, onSaveError);
                 //Commande.save(vm.commande, onSaveSuccess, onSaveError);
             }
         }

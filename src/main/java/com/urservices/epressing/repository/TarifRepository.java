@@ -15,8 +15,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface TarifRepository extends JpaRepository<Tarif,Long> {
 
-    @Query("SELECT t FROM Tarif t WHERE t.operation.id = :idOperation"
-            + " and t.produit.id= :idProduit ")
+    @Query("SELECT T FROM Tarif T WHERE T.operation.id = :idOperation "
+            + " AND T.produit.id = :idProduit ")
      public Tarif findByOperationAndProduct(@Param("idOperation") Long idOperation,
       @Param("idProduit") Long  idProduit);
-}
+}   

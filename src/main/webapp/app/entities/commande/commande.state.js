@@ -53,6 +53,38 @@
         })
         .state('commande-detail', {
             parent: 'commande',
+            url: '/commandeComplete/{id}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'epressingApp.commande.detail.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/commande/commande-detail.html',
+                    controller: 'CommandeDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('commande');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Commande', function($stateParams, Commande) {
+                    return Commande.getCommandeComplete({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'commande',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        }) 
+         /*.state('commande-detail', {
+            parent: 'commande',
             url: '/commande/{id}',
             data: {
                 authorities: ['ROLE_USER'],
@@ -82,7 +114,7 @@
                     return currentStateData;
                 }]
             }
-        })
+        })*/
         .state('commande-detail.edit', {
             parent: 'commande-detail',
             url: '/detail/edit',
@@ -125,10 +157,10 @@
                         entity: function () {  
                             return {
                                 dateCommande: new Date(),
-                                dateFacture: null,
-                                dateFacturation: null,
-                                dateCueillette: null,
-                                dateLivraison: null,
+                                dateFacture: new Date(),
+                                dateFacturation: new Date(),
+                                dateCueillette: new Date(),
+                                dateLivraison: new Date(),
                                 netAPayer: 0,
                                 etat: 'En attente de cueillette',
                                 adresseCueillette: null,

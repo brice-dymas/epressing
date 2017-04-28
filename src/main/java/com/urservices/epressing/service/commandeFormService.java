@@ -20,4 +20,12 @@ public interface commandeFormService
     CommandeForm findAll(Commande commande);
 
     void delete(Long id);
+
+    /**
+     *  Get the "id" commande.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    CommandeForm findOne(Long id);
 }

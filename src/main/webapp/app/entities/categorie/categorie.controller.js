@@ -21,7 +21,7 @@
         vm.loadAll = loadAll;
         vm.searchQuery = pagingParams.search;
         vm.currentSearch = pagingParams.search;
-
+ 
         loadAll();
 
         function loadAll () {

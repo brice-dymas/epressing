@@ -118,7 +118,7 @@ public class TarifResource {
     /**
      * GET /tarifs/operation/:idOperation/produit/:idProduit
      */
-    @GetMapping("/tarifs/operation/{idOperation}/produit/{idProduit]")
+    @GetMapping("/tarifs/operation/{idOperation}/produit/{idProduit]") 
     @Timed
     public ResponseEntity<Tarif> getTarifByOperationAndProduct(@PathVariable Long idOperation, @PathVariable Long idProduit) {
         log.debug("REST request to get Tarif  of Operation : {} and Product : {}", idOperation, idProduit);

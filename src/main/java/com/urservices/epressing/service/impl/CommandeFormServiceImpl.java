@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author sando
  */
 @Service
-@Transactional
+@Transactional 
 public class CommandeFormServiceImpl implements commandeFormService
 {
 
@@ -38,6 +38,7 @@ public class CommandeFormServiceImpl implements commandeFormService
     private final CaracteristiqueRepository caracteristiqueRepository;
     private final OperationRepository operationRepository;
     private final ProduitRepository produitRepository;
+    private Commande commande;
     private List<LigneCommande> ligneCommandes = new ArrayList<>();
 
     public CommandeFormServiceImpl(LigneCommandeRepository ligneCommandeRepository, CommandeRepository commandeRepository, CaracteristiqueRepository caracteristiqueRepository, OperationRepository operationRepository, ProduitRepository produitRepository)
@@ -50,12 +51,15 @@ public class CommandeFormServiceImpl implements commandeFormService
     }
 
     @Override
+    @Transactional 
     public CommandeForm save(CommandeForm commandeForm)
     {
         CommandeForm result = new CommandeForm();
-        Caracteristique caracteristique = new Caracteristique();
+        //Caracteristique caracteristique = new Caracteristique();
         Commande commande = commandeRepository.save(commandeForm.getCommande());
         result.setCommande(commande);
+        System.out.print("la nombre d'élément a save est de ");
+        System.out.println(commandeForm.getLigneCommandes().size());
 //        ligneCommandes = CommandeForm.getLigneCommandes();
         for (LigneCommande ligneCommande : commandeForm.getLigneCommandes())
         {
@@ -79,6 +83,21 @@ public class CommandeFormServiceImpl implements commandeFormService
     public void delete(Long id)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    /**
+     *  Get the "id" commande.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    public CommandeForm findOne(Long id){
+        CommandeForm result = new CommandeForm();
+        commande = commandeRepository.findOne(id);
+        ligneCommandes = ligneCommandeRepository.findByCommandeID(id);
+        result.setCommande(commande);
+        result.setLigneCommandes(ligneCommandes);
+        log.debug("'on a retrouvé exactement '"+ligneCommandes.size()+" éléments dans cette commande");
+        return result;
     }
 
 }

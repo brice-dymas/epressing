@@ -16,7 +16,6 @@
         vm.operations = Operation.query();
         vm.clear = clear; 
         vm.save = save;
-        //vm.compteur = $rootScope.lignesCommandes.length;
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -34,17 +33,18 @@
             //vm.ligneCommande.id= vm.compteur;
             vm.ligneCommande.quantite=1;
             vm.ligneCommande.etat= 'En attente';            
-            //vm.ligneCommande.produit = Produit.get({id:$stateParams.id});
+            vm.ligneCommande.produit = Produit.get({id:$stateParams.id});
             console.log('Produit ligne commande = '+vm.ligneCommande.produit.libelle+" ayant pour ID: "+vm.ligneCommande.produit.id);
             console.log('Operation ligne commande = '+vm.ligneCommande.operation.libelle+" ayant pour ID: "+vm.ligneCommande.operation.id);
-            //vm.ligneCommande.tarif= Tarif.getOperationPrice({idOperation:vm.ligneCommande.operation.id, idproduit:vm.ligneCommande.produit.id});
+            //vm.leTarif = Tarif.getOperationPrice({idOperation:vm.ligneCommande.operation.id, idProduit:vm.ligneCommande.produit.id});            
+            //vm.ligneCommande.tarif=  vm.leTarif.montant;
             //console.log('ID ligne commande = '+vm.compteur);
             vm.ligneCommande.tarif= 1000;
-            $scope.commandeForm.lignesCommandes.push(vm.ligneCommande);
+            $scope.commandeForm.ligneCommandes.push(vm.ligneCommande);
             console.log('ID of added element is '+vm.ligneCommande.id+" and its tarif is "+vm.ligneCommande.tarif.montant);
-            console.log('la taille de la liste de commande dans commandeForm est maintenant: '+$rootScope.commandeForm.lignesCommandes.length);
+            console.log('la taille de la liste de commande dans commandeForm est maintenant: '+$rootScope.commandeForm.ligneCommandes.length);
             onSaveSuccess;
-        };        
+        };         
 
         function onSaveSuccess (result) {
             $scope.$emit('epressingApp:produitUpdate', result);
@@ -53,7 +53,7 @@
         }
 
         function onSaveError () {
-            vm.isSaving = false;
+            vm.isSaving = false; 
         }
  }
 })();

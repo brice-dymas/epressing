@@ -40,20 +40,16 @@
                     <th jh-sort-by="adresseCueillette"><span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dateLivraison"><span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="adresseLivraison"><span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="netAPayer"><span data-translate="epressingApp.commande.netAPayer">Net A Payer</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="etat"><span data-translate="epressingApp.commande.etat">Etat</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="commande in vm.commandes track by commande.id">
-                    <td>{{commande.dateCommande | date:'medium'}}</td>
-                    <td>{{commande.dateCueillette | date:'medium'}}</td>
+                    <td>{{commande.dateCommande | date:'dd/MM/yyyy HH:mm'}}</td>
+                    <td>{{commande.dateCueillette | date:'dd/MM/yyyy HH:mm'}}</td>
                     <td>{{commande.adresseCueillette}}</td>
-                    <td>{{commande.dateLivraison | date:'medium'}}</td>
+                    <td>{{commande.dateLivraison | date:'dd/MM/yyyy HH:mm'}}</td>
                     <td>{{commande.adresseLivraison}}</td>
-                    <td>{{commande.netAPayer}}</td>
-                    <td>{{commande.etat}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

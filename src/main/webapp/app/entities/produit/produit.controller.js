@@ -11,7 +11,7 @@
 
         var vm = this;
 
-        vm.lignesCommandes = $rootScope.lignesCommandes;
+        vm.ligneCommandes = $rootScope.ligneCommandes;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
