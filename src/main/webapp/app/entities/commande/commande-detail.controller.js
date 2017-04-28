@@ -10,7 +10,8 @@
     function CommandeDetailController($scope, $rootScope, $stateParams, previousState, entity, Commande, CarteBancaire, Utilisateur) {
         var vm = this;
 
-        vm.commande = entity;
+        vm.commandeForm = entity;
+        vm.ligneCommandes = vm.commandeForm.ligneCommandes;
         vm.previousState = previousState.name;
 
         var unsubscribe = $rootScope.$on('epressingApp:commandeUpdate', function(event, result) {

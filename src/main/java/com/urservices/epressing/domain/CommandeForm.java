@@ -18,7 +18,7 @@ public class CommandeForm implements Serializable
     Commande commande;
     List<LigneCommande> ligneCommandes;
 
-    public CommandeForm()
+    public CommandeForm()  
     {
     }
 

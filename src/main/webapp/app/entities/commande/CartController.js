@@ -11,20 +11,20 @@
         var vm = this; 
         vm.order = entity; 
         //vm.commande = $rootScope.maCommande;
-        vm.lignesCommandes = $rootScope.commandeForm.lignesCommandes;
-        console.log($rootScope.commandeForm.lignesCommandes.length+' lignes de Commande dans $rootScope.commandeForm');
-        console.log(vm.lignesCommandes.length+' lignes de Commande dans vm.lignesCommandes ');
+        vm.ligneCommandes = $rootScope.commandeForm.ligneCommandes;
+        console.log($rootScope.commandeForm.ligneCommandes.length+' lignes de Commande dans $rootScope.commandeForm');
+        console.log(vm.ligneCommandes.length+' lignes de Commande dans vm.ligneCommandes ');
         vm.operations = Operation.query();        
         vm.save = save;
-        vm.remove = remove;
+        vm.remove = remove; 
 
               
         function remove(position){
-            $scope.commandeForm.lignesCommandes.splice(position,1);
+            $scope.commandeForm.ligneCommandes.splice(position,1);
         }
         function save () {
-            $rootScope.lignesCommandes.push(vm.ligneCommande);
-            console.log('la taille de la liste de commande est maintenant: '+$rootScope.commandeForm.lignesCommandes.length);
+            $rootScope.ligneCommandes.push(vm.ligneCommande);
+            console.log('la taille de la liste de commande est maintenant: '+$rootScope.commandeForm.ligneCommandes.length);
         };        
 
         

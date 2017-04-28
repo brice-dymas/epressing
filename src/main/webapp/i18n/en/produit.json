@@ -24,7 +24,7 @@
                 "etat": "Item State",
                 "tarif": "Unit Price",
                 "caracteristique":{
-                   "couleur": "clothe color",
+                   "couleur": "Clothe Color",
                     "marque": "Brand",
                     "libelle": "Remarks"
                 }

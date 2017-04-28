@@ -1,58 +1,99 @@
 
 <div>
-    <h2><span data-translate="epressingApp.commande.detail.title">Commande</span> {{vm.commande.id}}</h2>
+    <h2>
+        <span data-translate="epressingApp.commande.detail.title">Commande</span> {{vm.commandeForm.commande.id}} - 
+        <span data-translate="epressingApp.commande.netAPayer">Net A Payer</span>
+         <span>{{vm.commandeForm.commande.netAPayer}}</span>
+    </h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.commande.dateCommande">Date Commande</span></dt>
-        <dd>
-            <span>{{vm.commande.dateCommande | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.dateFacture">Date Facture</span></dt>
-        <dd>
-            <span>{{vm.commande.dateFacture | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.dateFacturation">Date Facturation</span></dt>
-        <dd>
-            <span>{{vm.commande.dateFacturation | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.dateCueillette">Date Cueillette</span></dt>
-        <dd>
-            <span>{{vm.commande.dateCueillette | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span></dt>
-        <dd>
-            <span>{{vm.commande.dateLivraison | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.netAPayer">Net A Payer</span></dt>
-        <dd>
-            <span>{{vm.commande.netAPayer}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.etat">Etat</span></dt>
-        <dd>
-            <span>{{vm.commande.etat}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span></dt>
-        <dd>
-            <span>{{vm.commande.adresseCueillette}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span></dt>
-        <dd>
-            <span>{{vm.commande.adresseLivraison}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.adresseFacturation">Adresse Facturation</span></dt>
-        <dd>
-            <span>{{vm.commande.adresseFacturation}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.carteBancaire">Carte Bancaire</span></dt>
-        <dd>
-            <a ui-sref="carte-bancaire-detail({id:vm.commande.carteBancaire.id})">{{vm.commande.carteBancaire.id}}</a>
-        </dd>
-        <dt><span data-translate="epressingApp.commande.client">Client</span></dt>
-        <dd>
-            <a ui-sref="utilisateur-detail({id:vm.commande.client.id})">{{vm.commande.client.id}}</a>
-        </dd>
-    </dl>
+  <table class="table table-bordered">
+  <thead>
+    <tr class="btn-info" >
+      <th>
+          <span data-translate="epressingApp.commande.dateCommande">Date Commande</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.dateCueillette">Date Cueillette</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+          <span>{{vm.commandeForm.commande.dateCommande | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.dateCueillette | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+      <th> 
+          <span>{{vm.commandeForm.commande.dateLivraison | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<table class="table table-bordered">
+  <thead>
+    <tr class="btn-info" >
+      <th>
+          <span data-translate="epressingApp.commande.etat">Etat</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+         <span>{{vm.commandeForm.commande.etat}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.adresseCueillette}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.adresseLivraison}}</span>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <tr class="btn-success" > 
+                <h2 data-translate="epressingApp.cart.title" >Pannier</h2>
+            </tr>
+            <thead>
+                <tr class="btn-success" >                    
+                    <th><span data-translate="epressingApp.cart.produit">Produit</span> </th>
+                    <th><span data-translate="epressingApp.cart.caracteristique.marque">Marque</span></th>
+                    <th><span data-translate="epressingApp.cart.caracteristique.couleur">Couleur</span></th>
+                    <th><span data-translate="epressingApp.cart.operation">Operation</span></th>
+                    <th><span data-translate="epressingApp.cart.tarif">Tarif</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="ligneCommande in vm.ligneCommandes track by ligneCommande.id ">
+                    <td>{{ligneCommande.produit.libelle}}</td>
+                    <td>{{ligneCommande.caracteristique.marque}}</td>
+                    <td>{{ligneCommande.caracteristique.couleur}}</td>
+                    <td>{{ligneCommande.operation.libelle}}</td>
+                    <td>{{ligneCommande.tarif}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
