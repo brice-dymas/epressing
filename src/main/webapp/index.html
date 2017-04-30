@@ -17,23 +17,40 @@
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
+    <link rel="stylesheet" href="content/css/font.css">
+    <link rel="stylesheet" href="content/css/app.css">
     <!-- endbuild -->
 </head>
 <body ng-app="epressingApp" ng-strict-di>
+    <div class="app app-header-fixed">
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <page-ribbon></page-ribbon>
-    <div ui-view="navbar" ng-cloak></div>
-    <div class="container">
-        <div class="well" ui-view="content">
-            <!-- Angular views -->
-        </div>
+    <!-- menu -->
+    <div ui-view="navbar" ng-cloak class="app-header navbar box-shadow bg-white-only"></div>
+      <!-- / menu -->
+      <div data-ng-include=" 'blocks/aside.html' " has-authority="ROLE_ADMIN"></div>
+      <div has-authority="ROLE_ADMIN" class="app-content"  ui-view="content">
+          <div class="app-content-body app-content-full fade-in" ng-class="{'h-full': app.hideFooter }" ui-view>
+              <!-- Angular views -->
+          </div>
+      </div>
+      <div has-not-authority="ROLE_ADMIN"  ui-view="content">
+          <div class="app-content-body app-content-full fade-in" ng-class="{'h-full': app.hideFooter }" ui-view>
+              <!-- Angular views -->
+          </div>
+      </div>
+      
 
-        <div class="footer" ng-cloak>
+        <div class="app-footer footer wrapper b-t bg-light" ng-cloak>
             <p data-translate="footer">This is your footer</p>
         </div>
-    </div>
+              
+      </div>
+      
+  
+  </div>
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
@@ -82,6 +99,7 @@
     <script src="app/services/auth/password-reset-init.service.js"></script>
     <script src="app/services/auth/password-reset-finish.service.js"></script>
     <script src="app/services/auth/password.service.js"></script>
+    <script src="app/services/auth/has-not-authority.directive.js"></script>
     <script src="app/services/auth/has-authority.directive.js"></script>
     <script src="app/services/auth/has-any-authority.directive.js"></script>
     <script src="app/services/auth/auth.service.js"></script>

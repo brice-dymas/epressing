@@ -37,17 +37,10 @@
                 $scope.commandeForm.ligneCommandes.push(vm.ligneCommande);
                 console.log('ID of added element is '+vm.ligneCommande.id+" and its tarif is "+vm.ligneCommande.tarif);
                 console.log('la taille de la liste de commande dans commandeForm est maintenant: '+$rootScope.commandeForm.ligneCommandes.length);
+                $uibModalInstance.close(true);
             });
+
         };         
 
-        function onSaveSuccess (result) {
-            $scope.$emit('epressingApp:produitUpdate', result);
-            $uibModalInstance.close(result);
-            vm.isSaving = false;
-        }
-
-        function onSaveError () {
-            vm.isSaving = false; 
-        }
  }
 })();
