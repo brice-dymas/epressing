@@ -31,7 +31,7 @@
             },
             "libelle": "Libelle",
             "photo": "Photo",
-            "categorie": "Categorie"
+            "categorie": "Category"
         }
     }
 }

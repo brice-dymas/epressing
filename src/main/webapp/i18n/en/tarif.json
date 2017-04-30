@@ -18,7 +18,8 @@
             },
             "montant": "Montant",
             "operation": "Operation",
-            "produit": "Produit"
+            "produit": "Produit",
+            "categorie": "Category"
         }
     }
 }
