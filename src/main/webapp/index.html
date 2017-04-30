@@ -30,13 +30,20 @@
     <!-- menu -->
     <div ui-view="navbar" ng-cloak class="app-header navbar box-shadow bg-white-only"></div>
       <!-- / menu -->
-      <div data-ng-include=" 'blocks/aside.html' "></div>
-      
-      <div class="app-content fade-in-up" ui-view="content">
-            <!-- Angular views -->
+      <div data-ng-include=" 'blocks/aside.html' " has-authority="ROLE_ADMIN"></div>
+      <div has-authority="ROLE_ADMIN" class="app-content"  ui-view="content">
+          <div class="app-content-body app-content-full fade-in" ng-class="{'h-full': app.hideFooter }" ui-view>
+              <!-- Angular views -->
+          </div>
       </div>
+      <div has-not-authority="ROLE_ADMIN"  ui-view="content">
+          <div class="app-content-body app-content-full fade-in" ng-class="{'h-full': app.hideFooter }" ui-view>
+              <!-- Angular views -->
+          </div>
+      </div>
+      
 
-        <div class="app-footer footer wrapper b-t bg-light m-t-lg" ng-cloak>
+        <div class="app-footer footer wrapper b-t bg-light" ng-cloak>
             <p data-translate="footer">This is your footer</p>
         </div>
               
@@ -92,6 +99,7 @@
     <script src="app/services/auth/password-reset-init.service.js"></script>
     <script src="app/services/auth/password-reset-finish.service.js"></script>
     <script src="app/services/auth/password.service.js"></script>
+    <script src="app/services/auth/has-not-authority.directive.js"></script>
     <script src="app/services/auth/has-authority.directive.js"></script>
     <script src="app/services/auth/has-any-authority.directive.js"></script>
     <script src="app/services/auth/auth.service.js"></script>
