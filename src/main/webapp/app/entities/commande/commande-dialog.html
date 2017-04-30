@@ -1,182 +1,157 @@
-
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
- 
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myCommandeLabel" data-translate="epressingApp.commande.home.createOrEditLabel">Create or edit a Commande</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.commande.id">
-            <label for="id" data-translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.commande.id" readonly />
-        </div> 
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                <label class="control-label" data-translate="epressingApp.commande.dateCommande" for="field_dateCommande">Date Commande</label>
-                    <div class="input-group">
-                        <input id="field_dateCommande" type="text" class="form-control" name="dateCommande" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateCommande" is-open="vm.datePickerOpenStatus.dateCommande"
-                        disabled />
-
-                       <!-- <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>-->
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.dateCueillette" for="field_dateCueillette">Date Cueillette</label>
-                        <div class="input-group">
-                            <input id="field_dateCueillette" type="text" class="form-control" name="dateCueillette" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateCueillette" is-open="vm.datePickerOpenStatus.dateCueillette"
-                            required/>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCueillette')"><i class="glyphicon glyphicon-calendar"></i></button>
-                            </span>
-                        </div>
-                    <div ng-show="editForm.dateCueillette.$invalid">
-                        <p class="help-block"
-                            ng-show="editForm.dateCueillette.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                        <p class="help-block"
-                            ng-show="editForm.dateCueillette.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
-                            This field should be a date and time.
-                        </p>
-                    </div>
-                </div>
-            </div>     
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.dateLivraison" for="field_dateLivraison">Date Livraison</label>
-                        <div class="input-group">
-                            <input id="field_dateLivraison" type="text" class="form-control" name="dateLivraison" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison"
-                            required/>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
-                            </span>
-                        </div>
-                    <div ng-show="editForm.dateLivraison.$invalid">
-                        <p class="help-block"
-                            ng-show="editForm.dateLivraison.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                        <p class="help-block"
-                            ng-show="editForm.dateLivraison.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
-                            This field should be a date and time.
-                        </p>
-                    </div>
-                </div>
-            </div>       
-        </div>
-
-        <!--<div class="form-group">
-            <label class="control-label" data-translate="epressingApp.commande.dateFacture" for="field_dateFacture">Date Facture</label>
-                <div class="input-group">
-                    <input id="field_dateFacture" type="text" class="form-control" name="dateFacture" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateFacture" is-open="vm.datePickerOpenStatus.dateFacture"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFacture')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="epressingApp.commande.dateFacturation" for="field_dateFacturation">Date Facturation</label>
-                <div class="input-group">
-                    <input id="field_dateFacturation" type="text" class="form-control" name="dateFacturation" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateFacturation" is-open="vm.datePickerOpenStatus.dateFacturation"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFacturation')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-        </div>
-        -->
-        
-      <!--  <div class="form-group">
-            <label class="control-label" data-translate="epressingApp.commande.netAPayer" for="field_netAPayer">Net A Payer</label>
-            <input type="number" class="form-control" name="netAPayer" id="field_netAPayer"
-                    ng-model="vm.commande.netAPayer"
-                    />
-        </div>-->
+<div>
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+    
         <div class="row" >
-            <div class="col-md-4" >
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.etat" for="field_etat">Etat</label>
-                    <input type="text" class="form-control" name="etat" id="field_etat"
-                            ng-model="vm.commande.etat" disabled
-                            />
-                </div>
-            </div>
-            <div class="col-md-4" >
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.adresseCueillette" for="field_adresseCueillette">Adresse Cueillette</label>
-                    <input type="text" class="form-control" name="adresseCueillette" id="field_adresseCueillette"
-                            ng-model="vm.commande.adresseCueillette"
-                            required/>
-                    <div ng-show="editForm.adresseCueillette.$invalid">
-                        <p class="help-block"
-                            ng-show="editForm.adresseCueillette.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" >
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.adresseLivraison" for="field_adresseLivraison">Adresse Livraison</label>
-                    <input type="text" class="form-control" name="adresseLivraison" id="field_adresseLivraison"
-                            ng-model="vm.commande.adresseLivraison"
-                            required/>
-                    <div ng-show="editForm.adresseLivraison.$invalid">
-                        <p class="help-block"
-                            ng-show="editForm.adresseLivraison.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <h2 id="myCommandeLabel">
+                <span data-translate="epressingApp.commande.home.createOrEditLabel">
+                    Create or edit a Commande 
+                </span>  -  
+                <span data-translate="epressingApp.commande.netAPayer">Net A Payer</span>
+                <span>{{vm.commande.netAPayer}} CAD</span>
+            </h2>
         </div>
-       <!-- <div class="form-group">
-            <label class="control-label" data-translate="epressingApp.commande.adresseFacturation" for="field_adresseFacturation">Adresse Facturation</label>
-            <input type="text" class="form-control" name="adresseFacturation" id="field_adresseFacturation"
-                    ng-model="vm.commande.adresseFacturation"
-                    />
-        </div>
+        <div>
+            <jhi-alert-error></jhi-alert-error>
+            <div class="form-group" ng-show="vm.commande.id">
+                <label for="id" data-translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                        ng-model="vm.commande.id" readonly />
+            </div> 
 
-        <div class="form-group">
-            <label data-translate="epressingApp.commande.carteBancaire" for="field_carteBancaire">Carte Bancaire</label>
-            <select class="form-control" id="field_carteBancaire" name="carteBancaire" ng-model="vm.commande.carteBancaire" ng-options="carteBancaire as carteBancaire.id for carteBancaire in vm.cartebancaires track by carteBancaire.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="epressingApp.commande.client" for="field_client">Client</label>
-            <select class="form-control" id="field_client" name="client" ng-model="vm.commande.client" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
-                <option value=""></option>
-            </select>
-        </div>
-    </div>-->
-    <div class="row">
-        <div class="col-md-6" >
-                <div class="form-group">
-                    <label class="control-label" data-translate="epressingApp.commande.netAPayer" for="field_etat">Montant a Payer</label>
-                    <input type="text" class="form-control" name="netAPayer" id="field_netAPayer"
-                            ng-model="vm.commande.netAPayer" disabled
-                            />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <label class="control-label" data-translate="epressingApp.commande.dateCommande" for="field_dateCommande">Date Commande</label>
+                        <div class="input-group">
+                            <input id="field_dateCommande" type="text" class="form-control" name="dateCommande" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateCommande" is-open="vm.datePickerOpenStatus.dateCommande"
+                            disabled />
+
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')" disabled ><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" data-translate="epressingApp.commande.dateCueillette" for="field_dateCueillette">Date Cueillette</label>
+                            <div class="input-group">
+                                <input id="field_dateCueillette" type="text" class="form-control" name="dateCueillette" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateCueillette" is-open="vm.datePickerOpenStatus.dateCueillette"
+                                required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCueillette')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        <div ng-show="editForm.dateCueillette.$invalid">
+                            <p class="help-block"
+                                ng-show="editForm.dateCueillette.$error.required" data-translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                            <p class="help-block"
+                                ng-show="editForm.dateCueillette.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                                This field should be a date and time.
+                            </p>
+                        </div>
+                    </div>
+                </div>     
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" data-translate="epressingApp.commande.dateLivraison" for="field_dateLivraison">Date Livraison</label>
+                            <div class="input-group">
+                                <input id="field_dateLivraison" type="text" class="form-control" name="dateLivraison" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison"
+                                required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        <div ng-show="editForm.dateLivraison.$invalid">
+                            <p class="help-block"
+                                ng-show="editForm.dateLivraison.$error.required" data-translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                            <p class="help-block"
+                                ng-show="editForm.dateLivraison.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                                This field should be a date and time.
+                            </p>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+            
+            <div class="row" >
+                <div class="col-md-4" >
+                    <div class="form-group">
+                        <label class="control-label" data-translate="epressingApp.commande.etat" for="field_etat">Etat</label>
+                        <input type="text" class="form-control" name="etat" id="field_etat"
+                                ng-model="vm.commande.etat" disabled
+                                />
+                    </div>
+                </div>
+                <div class="col-md-4" >
+                    <div class="form-group">
+                        <label class="control-label" data-translate="epressingApp.commande.adresseCueillette" for="field_adresseCueillette">Adresse Cueillette</label>
+                        <input type="text" class="form-control" name="adresseCueillette" id="field_adresseCueillette"
+                                ng-model="vm.commande.adresseCueillette"
+                                required/>
+                        <div ng-show="editForm.adresseCueillette.$invalid">
+                            <p class="help-block"
+                                ng-show="editForm.adresseCueillette.$error.required" data-translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" >
+                    <div class="form-group">
+                        <label class="control-label" data-translate="epressingApp.commande.adresseLivraison" for="field_adresseLivraison">Adresse Livraison</label>
+                        <input type="text" class="form-control" name="adresseLivraison" id="field_adresseLivraison"
+                                ng-model="vm.commande.adresseLivraison"
+                                required/>
+                        <div ng-show="editForm.adresseLivraison.$invalid">
+                            <p class="help-block"
+                                ng-show="editForm.adresseLivraison.$error.required" data-translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
-        </button>
-    </div>
-</form>
+            <hr>
+
+            <div>
+                <h2 data-translate="epressingApp.cart.title">Pannier</h2>
+                <jhi-alert></jhi-alert>
+                <br/>
+                <div class="table-responsive">
+                    <table class="jh-table table table-bordered">
+                        <thead>
+                            <tr class="btn-info" >                    
+                                <th><span data-translate="epressingApp.cart.produit">Produit</span> </th>
+                                <th><span data-translate="epressingApp.cart.caracteristique.marque">Marque</span></th>
+                                <th><span data-translate="epressingApp.cart.caracteristique.couleur">Couleur</span></th>
+                                <th><span data-translate="epressingApp.cart.operation">Operation</span></th>
+                                <th><span data-translate="epressingApp.cart.tarif">Tarif</span></th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <tr ng-repeat="ligneCommande in vm.ligneCommandes track by $index ">
+                                <td>{{ligneCommande.produit.libelle}}</td>
+                                <td>{{ligneCommande.caracteristique.marque}}</td>
+                                <td>{{ligneCommande.caracteristique.couleur}}</td>
+                                <td>{{ligneCommande.operation.libelle}}</td>
+                                <td>{{ligneCommande.tarif}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+</div>
+
+            <div>               
+                <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </div>    
+    </form>
+</div>

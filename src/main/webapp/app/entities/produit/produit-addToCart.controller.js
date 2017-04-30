@@ -27,23 +27,17 @@
        
 
         function save () {
-           // alert('operation ID '+vm.ligneCommande.produit.id);
-            
-            //vm.compteur = vm.compteur + 1;
-            //vm.ligneCommande.id= vm.compteur;
             vm.ligneCommande.quantite=1;
-            vm.ligneCommande.etat= 'En attente';            
-            vm.ligneCommande.produit = Produit.get({id:$stateParams.id});
+            vm.ligneCommande.etat= 'En attente';
             console.log('Produit ligne commande = '+vm.ligneCommande.produit.libelle+" ayant pour ID: "+vm.ligneCommande.produit.id);
             console.log('Operation ligne commande = '+vm.ligneCommande.operation.libelle+" ayant pour ID: "+vm.ligneCommande.operation.id);
-            //vm.leTarif = Tarif.getOperationPrice({idOperation:vm.ligneCommande.operation.id, idProduit:vm.ligneCommande.produit.id});            
-            //vm.ligneCommande.tarif=  vm.leTarif.montant;
-            //console.log('ID ligne commande = '+vm.compteur);
-            vm.ligneCommande.tarif= 1000;
-            $scope.commandeForm.ligneCommandes.push(vm.ligneCommande);
-            console.log('ID of added element is '+vm.ligneCommande.id+" and its tarif is "+vm.ligneCommande.tarif.montant);
-            console.log('la taille de la liste de commande dans commandeForm est maintenant: '+$rootScope.commandeForm.ligneCommandes.length);
-            onSaveSuccess;
+            vm.leTarif = Produit.getOperationPrice({idOperation:vm.ligneCommande.operation.id, idProduit:vm.ligneCommande.produit.id});            
+            vm.leTarif.$promise.then(function(data){
+                vm.ligneCommande.tarif = data.montant;
+                $scope.commandeForm.ligneCommandes.push(vm.ligneCommande);
+                console.log('ID of added element is '+vm.ligneCommande.id+" and its tarif is "+vm.ligneCommande.tarif);
+                console.log('la taille de la liste de commande dans commandeForm est maintenant: '+$rootScope.commandeForm.ligneCommandes.length);
+            });
         };         
 
         function onSaveSuccess (result) {
