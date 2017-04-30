@@ -25,8 +25,9 @@
                 url: operationUrl,
                 method: 'GET',
                 transformResponse: function (data) {
-                    if (data) {
+                    if (data) {                        
                         data = angular.fromJson(data);
+                        console.log(data);
                     }
                     return data;
                 }

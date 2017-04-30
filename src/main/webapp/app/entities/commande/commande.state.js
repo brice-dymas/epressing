@@ -144,6 +144,43 @@
             parent: 'commande',
             url: '/new',
             data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'epressingApp.commande.home.createOrEditLabel'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/commande/commande-dialog.html',
+                    controller: 'CommandeDialogController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('commande');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Commande','$rootScope', function ($stateParams, Commande, $rootScope) {  
+                    return {
+                        dateCommande: new Date(),
+                        dateFacture: new Date(),
+                        dateFacturation: new Date(),
+                        dateCueillette: new Date(),
+                        dateLivraison: new Date(),
+                        netAPayer: 0,
+                        etat: 'En attente de cueillette',
+                        adresseCueillette: null,
+                        adresseLivraison: null,
+                        adresseFacturation: null,
+                        id: null
+                    };
+            }]
+        }
+    })
+     
+       /* .state('commande.new', {
+            parent: 'commande',
+            url: '/new',
+            data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
@@ -176,7 +213,7 @@
                     $state.go('commande');
                 });
             }]
-        })
+        })*/
         .state('commande.edit', {
             parent: 'commande',
             url: '/{id}/edit',
