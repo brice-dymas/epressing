@@ -1,6 +1,7 @@
 package com.urservices.epressing.service;
 
 import com.urservices.epressing.domain.Produit;
+import com.urservices.epressing.service.dto.ProduitTarifDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -25,6 +26,8 @@ public interface ProduitService {
      *  @return the list of entities
      */
     Page<Produit> findAll(Pageable pageable);
+
+    Page<ProduitTarifDTO> findAllWithTarif(Pageable pageable);
 
     /**
      *  Get the "id" produit.

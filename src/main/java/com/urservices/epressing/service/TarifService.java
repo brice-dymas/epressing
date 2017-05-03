@@ -36,6 +36,8 @@ public interface TarifService {
 
     Tarif findByOperationAndProduct(Long idOperation, Long idProduit);
 
+    public List<Tarif> findByProductID(Long  idProduit);
+
     /**
      *  Delete the "id" tarif.
      *

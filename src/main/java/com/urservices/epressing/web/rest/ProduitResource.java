@@ -2,7 +2,10 @@ package com.urservices.epressing.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.urservices.epressing.domain.Produit;
+import com.urservices.epressing.domain.Tarif;
 import com.urservices.epressing.service.ProduitService;
+import com.urservices.epressing.service.TarifService;
+import com.urservices.epressing.service.dto.ProduitTarifDTO;
 import com.urservices.epressing.web.rest.util.HeaderUtil;
 import com.urservices.epressing.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -99,6 +102,32 @@ public class ProduitResource {
         log.debug("REST request to get a page of Produits");
         Page<Produit> page = produitService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/produits");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /produitsTarifs : get all the produits.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of produits in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/produits/produitsTarifs")
+    @Timed
+    public ResponseEntity<List<ProduitTarifDTO>> getAllProduitsWithTarifs(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Produits each with its Tarif");
+        Page<ProduitTarifDTO> page = produitService.findAllWithTarif(pageable);
+        List<ProduitTarifDTO> tarifDTOs = page.getContent();
+        for(ProduitTarifDTO ptdto : tarifDTOs){
+            log.debug("le produit {}  ", ptdto.getProduit().getLibelle());
+            /*List<Tarif> tarifs = ptdto.getTarifs();
+            for(Tarif t : tarifs){
+                log.debug("tarif de {} pour lopération {} ", t.getMontant(), t.getOperation().getLibelle() );
+            }*/
+            log.debug("---------------------------------------------------------------  \n ----------------------");
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/produits/produitsTarifs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

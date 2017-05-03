@@ -10,7 +10,7 @@
         $stateProvider
         .state('produit', {
             parent: 'entity',
-            url: '/produit?page&sort&search',
+            url: '/produits/produitsTarifs?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'epressingApp.produit.home.title'
