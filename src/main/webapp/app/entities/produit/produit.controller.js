@@ -12,7 +12,6 @@
         var vm = this;
 
         vm.ligneCommandes = $rootScope.ligneCommandes;
-        //vm.tarifs = Produit.getTarifByProductID({idProduit:$state.id})
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;

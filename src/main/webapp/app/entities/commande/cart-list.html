@@ -1,9 +1,18 @@
+<div class="bg-light lter b-b wrapper-md">
+      <h1 class="m-n font-thin h3" data-translate="epressingApp.cart.title">Pannier</h1>
+</div>
 <div class="container">
-    <h2 data-translate="epressingApp.cart.title">Pannier</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+     <div class="col-sm-12">
+        <div class="row">    
+            <div class="col-sm-12 col-xs-12">    
+                <jhi-alert></jhi-alert>
+            </div>
+        </div>
+    </div>
+    <br/>&nbsp;
+    <div class="col-sm-12">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
+            <div class="col-sm-4 col-xs-4">
                 <button class="btn btn-primary" ui-sref="commande.new" >
                     <span class="glyphicon glyphicon-usd"></span>
                     <span class="hidden-xs-down"  data-translate="epressingApp.cart.checkout">
@@ -12,36 +21,41 @@
                 </button>
             </div>
         </div> 
-    </div>
+    </div> 
     <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr>                    
-                    <th><span data-translate="epressingApp.cart.produit">Produit</span> </th>
-                    <th><span data-translate="epressingApp.cart.caracteristique.marque">Marque</span></th>
-                    <th><span data-translate="epressingApp.cart.caracteristique.couleur">Couleur</span></th>
-                    <th><span data-translate="epressingApp.cart.operation">Operation</span></th>
-                    <th><span data-translate="epressingApp.cart.tarif">Tarif</span></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody> 
-                <tr ng-repeat="ligneCommande in vm.ligneCommandes track by $index ">
-                    <td>{{ligneCommande.produit.libelle}}</td>
-                    <td>{{ligneCommande.caracteristique.marque}}</td>
-                    <td>{{ligneCommande.caracteristique.couleur}}</td>
-                    <td>{{ligneCommande.operation.libelle}}</td>
-                    <td>{{ligneCommande.tarif}}</td>
-                    <td class="text-right">
-                        <a ng-click="vm.remove({$index})"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>
-                            <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <hr>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="jh-table table table-striped"> 
+                    <thead>
+                        <tr>                    
+                            <th><span data-translate="epressingApp.cart.produit">Produit</span> </th>
+                            <th><span data-translate="epressingApp.cart.caracteristique.marque">Marque</span></th>
+                            <th><span data-translate="epressingApp.cart.caracteristique.couleur">Couleur</span></th>
+                            <th><span data-translate="epressingApp.cart.operation">Operation</span></th>
+                            <th><span data-translate="epressingApp.cart.tarif">Tarif</span></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr ng-repeat="ligneCommande in vm.ligneCommandes track by $index ">
+                            <td>{{ligneCommande.produit.libelle}}</td>
+                            <td>{{ligneCommande.caracteristique.marque}}</td>
+                            <td>{{ligneCommande.caracteristique.couleur}}</td>
+                            <td>{{ligneCommande.operation.libelle}}</td>
+                            <td>{{ligneCommande.tarif}}</td>
+                            <td class="text-right">
+                                <a ng-click="vm.remove({$index})"
+                                        class="btn btn-danger btn-sm">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                    <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

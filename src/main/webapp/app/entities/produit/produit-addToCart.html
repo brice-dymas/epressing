@@ -29,10 +29,9 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label data-translate="epressingApp.produit.addToCart.operation" for="field_operation">Operations</label>
-                        <select class="form-control" id="field_operation" name="operation" ng-model="vm.ligneCommande.operation" ng-options="operation as operation.libelle for operation in vm.operations track by operation.id " required>
-                            <option value="">
-                            </option>
-                        </select>
+                        <input type="text" class="form-control" name="libelle" id="field_libelle"
+                        ng-model="vm.ligneCommande.operation.libelle"
+                        readonly/>
                     </div>
                 </div>
                                                              

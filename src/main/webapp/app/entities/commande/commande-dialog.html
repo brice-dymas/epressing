@@ -1,23 +1,27 @@
+<div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3" data-translate="epressingApp.commande.home.createOrEditLabel">Create or edit a Commande </h1>
+    <span data-translate="epressingApp.commande.netAPayer">Net A Payer </span>
+    <span>{{vm.commande.netAPayer}} CAD</span>
+</div>
 <div>
-    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-    
-        <div class="row" >
-            <h2 id="myCommandeLabel">
-                <span data-translate="epressingApp.commande.home.createOrEditLabel">
-                    Create or edit a Commande 
-                </span>  -  
-                <span data-translate="epressingApp.commande.netAPayer">Net A Payer</span>
-                <span>{{vm.commande.netAPayer}} CAD</span>
-            </h2>
-        </div>
-        <div>
+<hr>    
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>          
+        <div class="container">
+            <div class="col-sm-12">
+                <div class="row">    
+                    <div class="col-sm-12 col-xs-12">    
+                        <jhi-alert-error></jhi-alert-error>
+                    </div>
+                </div>
+         </div>
+        <br/>
             <jhi-alert-error></jhi-alert-error>
             <div class="form-group" ng-show="vm.commande.id">
                 <label for="id" data-translate="global.field.id">ID</label>
                 <input type="text" class="form-control" id="id" name="id"
                         ng-model="vm.commande.id" readonly />
             </div> 
-
+        <div class="col-sm-12">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -25,11 +29,9 @@
                         <div class="input-group">
                             <input id="field_dateCommande" type="text" class="form-control" name="dateCommande" datetime-picker="{{dateformat}}" ng-model="vm.commande.dateCommande" is-open="vm.datePickerOpenStatus.dateCommande"
                             disabled />
-
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')" disabled ><i class="glyphicon glyphicon-calendar"></i></button>
                             </span>
-
                         </div>
                     </div>
                 </div>
@@ -145,12 +147,12 @@
                         </tbody>
                     </table>
                 </div>
-</div>
-
+            </div>
             <div>               
                 <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
                     <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
                 </button>
+            </div>
             </div>
         </div>    
     </form>
