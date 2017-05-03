@@ -1,16 +1,22 @@
 package com.urservices.epressing.service.impl;
 
 import com.urservices.epressing.service.ProduitService;
+import com.urservices.epressing.service.TarifService;
+import com.urservices.epressing.service.dto.ProduitTarifDTO;
 import com.urservices.epressing.domain.Produit;
+import com.urservices.epressing.domain.Tarif;
 import com.urservices.epressing.repository.ProduitRepository;
+import com.urservices.epressing.repository.TarifRepository;
 import com.urservices.epressing.repository.search.ProduitSearchRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -28,11 +34,14 @@ public class ProduitServiceImpl implements ProduitService{
     
     private final ProduitRepository produitRepository;
 
+    private final TarifRepository tarifRepository;
+
     private final ProduitSearchRepository produitSearchRepository;
 
-    public ProduitServiceImpl(ProduitRepository produitRepository, ProduitSearchRepository produitSearchRepository) {
+    public ProduitServiceImpl(ProduitRepository produitRepository, ProduitSearchRepository produitSearchRepository, TarifRepository tarifRepository) {
         this.produitRepository = produitRepository;
         this.produitSearchRepository = produitSearchRepository;
+        this.tarifRepository = tarifRepository;
     }
 
     /**
@@ -63,6 +72,32 @@ public class ProduitServiceImpl implements ProduitService{
         return result;
     }
 
+    /**
+     *  Get all the produits with their Tarif
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProduitTarifDTO> findAllWithTarif(Pageable pageable){
+        log.debug("Request to get all Produits with their Tarif");
+        List<Produit> produits = produitRepository.findAll();     
+        log.debug("ProduitServiceImpl on a trouvé {} produits ", produits.size()); 
+        List<ProduitTarifDTO> produitTarifDTOs = new ArrayList<>();
+        for(Produit prod : produits){
+            ProduitTarifDTO dto = new ProduitTarifDTO();
+            List<Tarif> tarifs = new ArrayList<>();
+            log.debug("ProduitServiceImpl produit trouvé: {} pour ID {} ", prod.getLibelle(), prod.getId());
+            tarifs = tarifRepository.findByProductID(prod.getId());
+            log.debug("ProduitServiceImpl le produit trouvé: {} contient: {}  tarifs", prod.getLibelle(), tarifs.size());
+            dto.setProduit(prod);
+            dto.setTarifs(tarifs);
+            produitTarifDTOs.add(dto);
+        }
+        long total = produitTarifDTOs.size();
+        return new PageImpl<ProduitTarifDTO>(produitTarifDTOs, pageable, total);
+    }
     /**
      *  Get one produit by id.
      *

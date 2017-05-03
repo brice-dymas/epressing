@@ -126,6 +126,19 @@ public class TarifResource {
         System.out.println("le Tarif trouvé a pour ID " + tarif.getId() );
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tarif));
     }
+
+    /**
+     * GET /tarifs/produit/:idProduit
+     */
+    @GetMapping("/tarifs/produit/{idProduit}") 
+    @Timed
+    public ResponseEntity<List<Tarif>> getTarifByProductID(@PathVariable Long idProduit) {
+        log.debug("REST request to get Tarif for Product ID : {}", idProduit);
+        List<Tarif> tarifs = tarifService.findByProductID(idProduit);
+        System.out.println("les Tarifs trouvés sont au nombre de  " + tarifs.size() );
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tarifs));
+        //return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
     
     /**
      * DELETE  /tarifs/:id : delete the "id" tarif.

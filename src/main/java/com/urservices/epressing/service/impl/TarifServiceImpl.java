@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -80,12 +81,16 @@ public class TarifServiceImpl implements TarifService{
     @Override
     @Transactional(readOnly = true)
     public Tarif findByOperationAndProduct(Long idOperation, Long idProduit){
-        log.debug("--------------------------------- get Tarif of Produit identified by {} ", idProduit);
-        log.debug("--------------------------------- get Tarif of Operation identified by {} ", idOperation);
         Tarif tarif = tarifRepository.findByOperationAndProduct(idOperation, idProduit);
-        log.debug(" \n \n \n \n \nLe tarif trouvé est {} ", tarif);
         return tarif;
     } 
+
+     @Override
+    @Transactional(readOnly = true)
+    public List<Tarif> findByProductID(Long  idProduit){
+        List<Tarif> result = tarifRepository.findByProductID(idProduit) ;
+        return result;
+    }
     /**
      *  Delete the  tarif by id.
      *

@@ -7,11 +7,13 @@
     Produit.$inject = ['$resource'];
 
     function Produit ($resource) {
+        var produitsTarifsUrl = 'api/produits/produitsTarifs';
         var resourceUrl =  'api/produits/:id';
         var operationUrl = 'api/tarifs/operation/:idOperation/produit/:idProduit';
+        var produitTarifUrl = 'api/tarifs/produit/:idProduit';
         
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { url: produitsTarifsUrl, method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -23,6 +25,17 @@
             },
             'getOperationPrice': {
                 url: operationUrl,
+                method: 'GET',
+                transformResponse: function (data) {
+                    if (data) {                        
+                        data = angular.fromJson(data);
+                        console.log(data);
+                    }
+                    return data;
+                }
+            }, 
+            'getTarifByProductID': {
+                url: produitTarifUrl,
                 method: 'GET',
                 transformResponse: function (data) {
                     if (data) {                        

@@ -12,6 +12,7 @@
         var vm = this;
 
         vm.ligneCommandes = $rootScope.ligneCommandes;
+        //vm.tarifs = Produit.getTarifByProductID({idProduit:$state.id})
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -79,7 +80,7 @@
             vm.links = null;
             vm.page = 1;
             vm.predicate = '_score';
-            vm.reverse = false;
+            vm.reverse = false; 
             vm.currentSearch = searchQuery;
             vm.transition();
         }
