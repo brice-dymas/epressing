@@ -12,31 +12,31 @@
         <br/>&nbsp;
         <div class="col-sm-12">
             <div class="row">
-        <div class="col-sm-4 col-xs-4">
-            <button class="btn btn-primary" ui-sref="produit.new" >
-                <span class="glyphicon glyphicon-plus"></span>
-                <span class="hidden-xs-down"  data-translate="epressingApp.produit.home.createLabel">
-                    Create new Produit
-                </span>
-            </button>
-        </div>
-        <div class=" col-sm-8 col-xs-8">
-            <form name="searchForm" class="form-inline">
-                <div class="input-group pull-right" >
-                    <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'epressingApp.produit.home.search' | translate }}">
-                    <span  class="input-group-btn width-min" >
-                        <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                    <span class="input-group-btn width-min" ng-if="vm.currentSearch">
-                        <button class="btn btn-info" ng-click="vm.clear()">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </span>
+                <div class="col-sm-4 col-xs-4">
+                    <button class="btn btn-primary" ui-sref="produit.new" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-xs-down"  data-translate="epressingApp.produit.home.createLabel">
+                            Create new Produit
+                        </span>
+                    </button>
                 </div>
-            </form>
-        </div>
+                <div class=" col-sm-8 col-xs-8">
+                    <form name="searchForm" class="form-inline">
+                        <div class="input-group pull-right" >
+                            <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'epressingApp.produit.home.search' | translate }}">
+                            <span  class="input-group-btn width-min" >
+                                <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                            <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                                <button class="btn btn-info" ng-click="vm.clear()">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     <br/>&nbsp;
@@ -103,7 +103,7 @@
             <div class="text-left wrapper m-b-sm">
                 <ul class="list-group no-radius">
                     <li class="list-group-item">
-                         {{produitDTO.produit.categorie.libelle}} -- {{produitDTO.produit.libelle}}                        
+                         <b> {{produitDTO.produit.categorie.libelle}} -- {{produitDTO.produit.libelle | uppercase}} </b>
                         <span class="pull-right">
                             <button type="submit"
                                 ui-sref="produit-detail({id:produitDTO.produit.id})"
@@ -126,26 +126,21 @@
                 sliceColors:['{{app.color.primary}}','{{app.color.info}}','{{app.color.warning}}']
               }
               " class="sparkline inline"> </div>
-            </div>
-            
-              </ul>
-              
+            </div>            
+              </ul>              
                   <ul class="list-group no-radius">
                         <li class="list-group-item" ng-repeat="tarif in produitDTO.tarifs track by tarif.id">
                             <span class="pull-right">                               
                                 <button type="submit"
-                                    ui-sref="produit.addToCart({id:produit.id})"
+                                    ui-sref="produit.addToCart({idTarif:tarif.id})"
                                     class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-shopping-cart  "></span>
                             </button>
                             </span>
                             <span class="label bg-info">#</span>
-                            {{tarif.operation.libelle}} : {{tarif.montant}}
+                            {{tarif.operation.libelle | uppercase }} : {{tarif.montant}}
                         </li>
                   </ul>
-              
-              
-            
           </div>
         </div>
             </div>

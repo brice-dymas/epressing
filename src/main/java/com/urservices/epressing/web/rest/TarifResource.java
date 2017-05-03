@@ -111,12 +111,18 @@ public class TarifResource {
     @GetMapping("/tarifs/{id}")
     @Timed
     public ResponseEntity<Tarif> getTarif(@PathVariable Long id) {
-        log.debug("REST request to get Tarif : {}", id);
+        log.debug("TarifRessouce.java REST request to get Tarif : {}", id);
         Tarif tarif = tarifService.findOne(id);
+        log.debug("TarifRessouce.java found this Tarif : {}", tarif);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tarif));
     }
     /**
      * GET /tarifs/operation/:idOperation/produit/:idProduit
+     * 
+        vm.tarifUtiliser = Tarif.get({id:$stateParams.id});
+        vm.ligneCommande.produit = tarifUtiliser.produit;
+        vm.ligneCommande.operation = tarifUtiliser.operation;
+        vm.ligneCommande.tarif = tarifUtiliser.montant;
      */
     @GetMapping("/tarifs/operation/{idOperation}/produit/{idProduit}") 
     @Timed

@@ -139,6 +139,56 @@
         })
         .state('produit.addToCart', {
             parent: 'produit',
+            url: '/addToCart/{idTarif}',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal','$rootScope', function($stateParams, $state, $uibModal,$rootScope) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/produit/produit-addToCart.html',
+                    controller: 'ProduitAddToCartController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {                            
+                                id: null,
+                                quantite: null,
+                                etat: null,
+                                tarif: 0,
+                                produit: {
+                                    id:null,
+                                    libelle:null,
+                                    photo:null
+                                },
+                                commande: {},
+                                operation:{ 
+                                    id:null,
+                                    libelle: null,
+                                    description: null
+                                },
+                                caracteristique: {
+                                    id: null,
+                                    couleur: null,
+                                    marque: null,
+                                    libelle: null
+                                }
+                            };
+                        },
+                        usedTarif: ['Tarif', function(Tarif) {
+                            return Tarif.get({id : $stateParams.idTarif}).$promise;
+                        }],                        
+                    }
+                }).result.then(function() {
+                    $state.go('produit', null, { reload: 'produit' });
+                }, function() {
+                    $state.go('produit');
+                });
+            }]
+        })
+        /*.state('produit.addToCart', {
+            parent: 'produit',
             url: '/addToCart/{id}',
             data: {
                 authorities: ['ROLE_USER']
@@ -184,7 +234,7 @@
                     $state.go('produit');
                 });
             }]
-        })
+        })*/
         .state('produit.edit', {
             parent: 'produit',
             url: '/{id}/edit',

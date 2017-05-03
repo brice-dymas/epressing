@@ -9,12 +9,23 @@
     function Produit ($resource) {
         var produitsTarifsUrl = 'api/produits/produitsTarifs';
         var resourceUrl =  'api/produits/:id';
+        var getTarifUrl =  'api/tarifs/:id';        
         var operationUrl = 'api/tarifs/operation/:idOperation/produit/:idProduit';
         var produitTarifUrl = 'api/tarifs/produit/:idProduit';
         
         return $resource(resourceUrl, {}, {
             'query': { url: produitsTarifsUrl, method: 'GET', isArray: true},
             'get': {
+                method: 'GET',
+                transformResponse: function (data) {
+                    if (data) {
+                        data = angular.fromJson(data);
+                    }
+                    return data;
+                }
+            },
+            'getTarif': {
+                url: getTarifUrl,
                 method: 'GET',
                 transformResponse: function (data) {
                     if (data) {
