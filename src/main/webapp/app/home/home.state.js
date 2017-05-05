@@ -11,28 +11,65 @@
         $stateProvider.state('home', {
             parent: 'app',
             url: '/',
+            //parent: 'entity',
+            //url: '/produits/produitsTarifs?page&sort&search',
             data: {
-                authorities: []
+                authorities: [],
+                pageTitle: 'epressingApp.produit.home.title'
             },
             views: {
                 'content@': {
+                    templateUrl: 'app/entities/produit/produits.html',
+                    controller: 'ProduitController',
+                    controllerAs: 'vm'
+                    /*
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm'*/
                 }
             },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('produit');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }]
+            }
+        })
+            
+            /*,
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                     $translatePartialLoader.addPart('home');
                     return $translate.refresh();
                 }]
             }
-        })
+        })*/
         .state('cart-list', {
             parent: 'commande',
             url: '/cart-view', 
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'epressingApp.cart.title'
             },
             views: {

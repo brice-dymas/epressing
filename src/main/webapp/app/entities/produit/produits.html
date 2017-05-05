@@ -4,16 +4,16 @@
  <div class="container">
          <div class="col-sm-12">
             <div class="row">    
-        <div class="col-sm-12 col-xs-12">    
-            <jhi-alert></jhi-alert>
-        </div>
+                <div class="col-sm-12 col-xs-12">    
+                    <jhi-alert></jhi-alert>
+                </div>
             </div>
          </div>
         <br/>&nbsp;
         <div class="col-sm-12">
-            <div class="row">
+            <div  class="row">
                 <div class="col-sm-4 col-xs-4">
-                    <button class="btn btn-primary" ui-sref="produit.new" >
+                    <button has-authority="ROLE_ADMIN"  class="btn btn-primary" ui-sref="produit.new" >
                         <span class="glyphicon glyphicon-plus"></span>
                         <span class="hidden-xs-down"  data-translate="epressingApp.produit.home.createLabel">
                             Create new Produit
@@ -105,12 +105,12 @@
                     <li class="list-group-item">
                          <b> {{produitDTO.produit.categorie.libelle}} -- {{produitDTO.produit.libelle | uppercase}} </b>
                         <span class="pull-right">
-                            <button type="submit"
+                            <button  has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="produit-detail({id:produitDTO.produit.id})"
                                 class="btn btn-info btn-xs">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </button>&nbsp
-                            <button type="submit"
+                            <button  has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="produit.edit({id:produitDTO.produit.id})"
                                 class="btn btn-xs btn-primary">
                             <span class="glyphicon glyphicon-pencil"></span>
