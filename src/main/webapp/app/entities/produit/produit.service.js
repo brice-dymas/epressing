@@ -47,11 +47,10 @@
             }, 
             'getTarifByProductID': {
                 url: produitTarifUrl,
-                method: 'GET',
+                method: 'GET', isArray: true,
                 transformResponse: function (data) {
                     if (data) {                        
                         data = angular.fromJson(data);
-                        console.log(data);
                     }
                     return data;
                 }

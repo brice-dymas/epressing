@@ -12,7 +12,7 @@
             parent: 'entity',
             url: '/produits/produitsTarifs?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                //authorities: ['ROLE_USER'],
                 pageTitle: 'epressingApp.produit.home.title'
             },
             views: {
@@ -52,7 +52,7 @@
         })
         .state('produit-detail', {
             parent: 'produit',
-            url: '/produit/{id}',
+            url: '/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'epressingApp.produit.detail.title'
@@ -67,10 +67,14 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('produit');
+                    $translatePartialLoader.addPart('tarif');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Produit', function($stateParams, Produit) {
                     return Produit.get({id : $stateParams.id}).$promise;
+                }],
+                tarifs: ['$stateParams', 'Produit', function($stateParams, Produit) {
+                    return Produit.getTarifByProductID({idProduit:$stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -101,9 +105,38 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('^', {}, { reload: false });
+                    $state.go('^', {}, {reload: false});
                 }, function() {
                     $state.go('^');
+                });
+            }]
+        }).state('produit-detail.addTarif', {
+            parent: 'produit-detail',
+            url: '/detail/addTarif',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/produit/produit-addTarif.html',
+                    controller: 'ProduitAddTarifController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Produit', function(Produit) {
+                            return {
+                                montant: null,
+                                operation: null,
+                                produit : Produit.get({id : $stateParams.id})   ,
+                                id: null
+                            }
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('produit-detail', {}, { reload: true });
+                }, function() {
+                    $state.go('produit-detail');
                 });
             }]
         })
@@ -141,7 +174,7 @@
             parent: 'produit',
             url: '/addToCart/{idTarif}',
             data: {
-                authorities: ['ROLE_USER']
+                //authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal','$rootScope', function($stateParams, $state, $uibModal,$rootScope) {
                 $uibModal.open({
