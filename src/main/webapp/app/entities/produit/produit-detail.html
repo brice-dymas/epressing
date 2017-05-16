@@ -1,59 +1,76 @@
 <div class="bg-light lter b-b wrapper-md">
-    <h1 class="m-n font-solid h1" data-translate="epressingApp.produit.detail.title">Produit :  {{vm.produit.libelle}}</h1>
-    <span class="m-n font-thin h3" data-translate="epressingApp.produit.libelle">Libelle</span>
-    <span class="m-n font-solid h3" > : {{vm.produit.libelle}}</span> <br>
-    <span class="m-n font-thin h3" data-translate="epressingApp.produit.categorie">Categorie</span>
-    <a class="m-n font-solid h3" ui-sref="categorie-detail({id:vm.produit.categorie.id})">{{vm.produit.categorie.libelle}}</a>
+    <h1 class="m-n font-thin h3 text-capitalize"><i class="fa fa-shopping-basket" aria-hidden="true"></i> {{vm.produit.categorie.libelle}} - {{vm.produit.libelle}}</h1>
 </div>
-<hr>
-<div class="container">
-    <div class="col-sm-12">
-        <div class="row">    
-            <div class="col-sm-12 col-xs-12">    
-                <jhi-alert></jhi-alert>
-            </div>
+<div class="col-sm-12">
+    <div class="row">    
+        <div class="col-sm-12 col-xs-12">    
+            <jhi-alert></jhi-alert>
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr>
-                    <th><span class="btn btn-success" data-translate="global.field.id">ID</span></th>
-                    <th><span class="btn btn-success" data-translate="epressingApp.tarif.operation">Operation</span> </th>
-                    <th><span class="btn btn-success" data-translate="epressingApp.tarif.categorie">Categorie</span></th>
-                    <th><span class="btn btn-success" data-translate="epressingApp.tarif.montant">Montant</span></th>                     
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="tarif in vm.tarifs track by tarif.id">
-                    <td><a ui-sref="tarif-detail({id:tarif.id})">{{tarif.id}}</a></td>
-                    <td>
-                        <a ui-sref="operation-detail({id:tarif.operation.id})">{{tarif.operation.libelle}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="categorie-detail({id:tarif.produit.categorie.id})">{{tarif.produit.categorie.libelle}}</a>
-                    </td>
-                    <td>{{tarif.montant}}</td>                   
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-12">         
+    <div class="wrapper-md bg-white-only b-b">
+        <br/>
         <div class="row">
-            <button type="submit"
-                    ui-sref="{{ vm.previousState }}"
-                    class="btn btn-info">
-                <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-            </button> 
-            <button type="button" ui-sref="produit-detail.edit({id:vm.produit.id})" class="btn btn-primary">
-                <span class="glyphicon glyphicon-pencil"></span>
-                <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-            </button> 
-            <button type="button" ui-sref="produit-detail.addTarif" class="btn btn-primary">
-                <span class="glyphicon glyphicon-plus"></span>
-                <span class="hidden-sm-down"> Add Tariff</span>
-            </button>        
+            <div class="col-md-3 text-center">            
+                <img data-ng-src="{{'data:' + vm.produit.photoContentType + ';base64,' + vm.produit.photo}}" class="img-shop-md">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Liste des prix
+                    </div>
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped b-t b-light">
+                            <thead>
+                                <tr>
+                                    <th><span data-translate="global.field.id">ID</span></th>
+                                    <th><span data-translate="epressingApp.tarif.operation">Operation</span> </th>
+                                    <th><span data-translate="epressingApp.tarif.categorie">Categorie</span></th>
+                                    <th><span data-translate="epressingApp.tarif.montant">Montant</span></th>                     
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="tarif in vm.tarifs track by tarif.id">
+                                    <td><a ui-sref="tarif-detail({id:tarif.id})">{{tarif.id}}</a></td>
+                                    <td>
+                                        <a ui-sref="operation-detail({id:tarif.operation.id})">{{tarif.operation.libelle}}</a>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="categorie-detail({id:tarif.produit.categorie.id})">{{tarif.produit.categorie.libelle}}</a>
+                                    </td>
+                                    <td>{{tarif.montant}}</td>  
+                                    <td>
+                                        <button type="submit"
+                                                ui-sref="produit.addToCart({idTarif:tarif.id})"
+                                                class="btn btn-info btn-xs">
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">   
+                        <button type="submit"
+                                ui-sref="{{ vm.previousState}}"
+                                class="btn btn-sm btn-info">
+                            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+                        </button> 
+                        <button type="button" ui-sref="produit-detail.edit({id:vm.produit.id})" class="btn btn-sm btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+                        </button> 
+                        <button type="button" ui-sref="produit-detail.addTarif" class="btn btn-sm btn-primary">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="hidden-sm-down"> Add Tariff</span>
+                        </button>        
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

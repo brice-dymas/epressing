@@ -1,27 +1,48 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3"><i class="fa fa-tags" aria-hidden="true"></i>
+        <span data-translate="epressingApp.operation.detail.title">Operation</span> {{vm.operation.id}}</h1>
+</div>
+<div class="col-md-12">
+    <div class="row">    
+        <div class="col-sm-12 col-xs-12" style="margin-top: 15px;">    
+            <jhi-alert></jhi-alert>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row wrapper">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <table class="table table-condensed">
+                        <tbody>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="epressingApp.operation.libelle">Libelle</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.operation.libelle}}</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="epressingApp.operation.description">Description</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.operation.description}}</h5></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer text-center">
+                    <button type="submit"
+                            ui-sref="{{ vm.previousState }}"
+                            class="btn btn-info">
+                        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+                    </button>
 
-<div>
-    <h2><span data-translate="epressingApp.operation.detail.title">Operation</span> {{vm.operation.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.operation.libelle">Libelle</span></dt>
-        <dd>
-            <span>{{vm.operation.libelle}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.operation.description">Description</span></dt>
-        <dd>
-            <span>{{vm.operation.description}}</span>
-        </dd>
-    </dl>
+                    <button type="button" ui-sref="operation-detail.edit({id:vm.operation.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+                    </button>
+                </div>
+            </div>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
 
-    <button type="button" ui-sref="operation-detail.edit({id:vm.operation.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
+
+        </div>
+    </div>
 </div>

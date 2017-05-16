@@ -4898,6 +4898,13 @@ a.text-#000000:hover {
   width: 100%;
 }
 
+.img-shop {
+  width: 35%;
+}
+.img-shop-md {
+  width: 50%;
+}
+
 .img-full img {
   width: 100%;
 }

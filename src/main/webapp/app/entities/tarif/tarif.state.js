@@ -95,7 +95,7 @@
                     controller: 'TarifDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Tarif', function(Tarif) {
                             return Tarif.get({id : $stateParams.id}).$promise;
@@ -120,11 +120,11 @@
                     controller: 'TarifDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
-                                montant: null,
+                                montant: 0,
                                 id: null
                             };
                         }
@@ -148,7 +148,7 @@
                     controller: 'TarifDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Tarif', function(Tarif) {
                             return Tarif.get({id : $stateParams.id}).$promise;
