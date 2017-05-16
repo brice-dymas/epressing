@@ -98,7 +98,7 @@
                     controller: 'ProduitDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'edit',
                     resolve: {
                         entity: ['Produit', function(Produit) {
                             return Produit.get({id : $stateParams.id}).$promise;
@@ -122,11 +122,11 @@
                     controller: 'ProduitAddTarifController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Produit', function(Produit) {
                             return {
-                                montant: null,
+                                montant: 0,
                                 operation: null,
                                 produit : Produit.get({id : $stateParams.id})   ,
                                 id: null
@@ -152,11 +152,11 @@
                     controller: 'ProduitDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
-                                libelle: null,
+                                libelle: "",
                                 photo: null,
                                 photoContentType: null,
                                 id: null
@@ -182,7 +182,7 @@
                     controller: 'ProduitAddToCartController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {                            
@@ -280,7 +280,7 @@
                     controller: 'ProduitDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Produit', function(Produit) {
                             return Produit.get({id : $stateParams.id}).$promise;

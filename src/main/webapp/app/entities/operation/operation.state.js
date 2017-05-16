@@ -95,7 +95,7 @@
                     controller: 'OperationDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Operation', function(Operation) {
                             return Operation.get({id : $stateParams.id}).$promise;
@@ -120,7 +120,7 @@
                     controller: 'OperationDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -149,7 +149,7 @@
                     controller: 'OperationDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Operation', function(Operation) {
                             return Operation.get({id : $stateParams.id}).$promise;

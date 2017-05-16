@@ -4,61 +4,62 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myProduitLabel" data-translate="epressingApp.produit.home.createOrEditLabel">Create or edit a Produit</h4>
+        <h4 class="modal-title" id="myProduitLabel">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i> <span data-translate="epressingApp.produit.home.createOrEditLabel">Create or edit a Produit</span></h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.produit.id">
             <label for="id" data-translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.produit.id" readonly />
+            <input type="hidden" class="form-control" id="id" name="id"
+                   ng-model="vm.produit.id" readonly />
         </div>              
-                 <div class="row">
-                     <div class="col-md-6">
+        <div class="row">
+             <div class="col-md-6">
+                <label data-translate="epressingApp.produit.categorie" for="field_categorie">Categorie</label>
+                <select class="form-control" id="field_categorie" name="categorie" ng-model="vm.produit.categorie" ng-options="categorie as categorie.libelle for categorie in vm.categories track by categorie.id" required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="col-md-6">
                 <label class="control-label" data-translate="epressingApp.produit.libelle" for="field_libelle">Libelle</label>
                 <input type="text" class="form-control" name="libelle" id="field_libelle"
-                        ng-model="vm.produit.libelle"
-                        required/>
+                       ng-model="vm.produit.libelle"
+                       required/>
                 <div ng-show="editForm.libelle.$invalid">
                     <p class="help-block"
-                        ng-show="editForm.libelle.$error.required" data-translate="entity.validation.required">
+                       ng-show="editForm.libelle.$error.required" data-translate="entity.validation.required">
                         This field is required.
                     </p>
                 </div>
             </div>
-            <div class="col-md-6" ngf-drop ngf-change="vm.setPhoto($file, vm.produit)">
-            <label class="control-label" data-translate="epressingApp.produit.photo" for="field_photo">Photo</label>
-            <div>
-                <div ng-if="vm.produit.photo" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.produit.photoContentType, vm.produit.photo)" data-translate="entity.action.open">open</a><br>
-                    <span class="pull-left">{{vm.produit.photoContentType}}, {{vm.byteSize(vm.produit.photo)}}</span>
-                    <button type="button" ng-click="vm.produit.photo=null;vm.produit.photoContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setPhoto($file, vm.produit)" data-translate="entity.action.addblob">
-                    Add Blob
-                </button>
             </div>
-            <input type="hidden" class="form-control" name="photo" id="field_photo"
-                    ng-model="vm.produit.photo"
-                    />
-            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
-                    ng-model="vm.produit.photoContentType" />
-        </div>
-            
-       </div>
         <div class="row">
+            <div class="col-md-6" ngf-drop ngf-change="vm.setPhoto($file, vm.produit)">
+                <label class="control-label" data-translate="epressingApp.produit.photo" for="field_photo">Photo</label>
+                 <button type="button" ngf-select class="btn btn-default btn-block"
+                            ngf-change="vm.setPhoto($file, vm.produit)" data-translate="entity.action.addblob">
+                        Add Blob
+                    </button>
+                <input type="hidden" class="form-control" name="photo" id="field_photo"
+                       ng-model="vm.produit.photo"
+                       />
+                <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                       ng-model="vm.produit.photoContentType" />
+            </div>
             <div class="col-md-6">
-            <label data-translate="epressingApp.produit.categorie" for="field_categorie">Categorie</label>
-            <select class="form-control" id="field_categorie" name="categorie" ng-model="vm.produit.categorie" ng-options="categorie as categorie.libelle for categorie in vm.categories track by categorie.id" required>
-                <option value=""></option>
-            </select>
+                    <div ng-if="vm.produit.photo" class="help-block clearfix">
+                        <a class="pull-left" ng-click="vm.openFile(vm.produit.photoContentType, vm.produit.photo)">
+                        <button type="button" ng-click="vm.produit.photo = null;vm.produit.photoContentType = null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <img data-ng-src="{{'data:' + vm.produit.photoContentType + ';base64,' + vm.produit.photo}}" class="thumb-md">
+                        </a>
+                    </div>
+                </div>
         </div>
-        </div>
-        
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

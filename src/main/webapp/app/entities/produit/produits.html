@@ -1,158 +1,79 @@
- <div class="bg-light lter b-b wrapper-md">
-      <h1 class="m-n font-thin h3" data-translate="epressingApp.produit.home.title">Produits</h1>
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3"><i class="fa fa-shopping-basket" aria-hidden="true"></i> 
+        <span data-translate="epressingApp.produit.home.title">Produits</span></h1>
 </div>
- <div class="container">
-         <div class="col-sm-12">
-            <div class="row">    
-                <div class="col-sm-12 col-xs-12">    
-                    <jhi-alert></jhi-alert>
-                </div>
-            </div>
-         </div>
-        <br/>&nbsp;
-        <div class="col-sm-12">
-            <div  class="row">
-                <div class="col-sm-4 col-xs-4">
-                    <button has-authority="ROLE_ADMIN"  class="btn btn-primary" ui-sref="produit.new" >
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="hidden-xs-down"  data-translate="epressingApp.produit.home.createLabel">
-                            Create new Produit
-                        </span>
-                    </button>
-                </div>
-                <div class=" col-sm-8 col-xs-8">
-                    <form name="searchForm" class="form-inline">
-                        <div class="input-group pull-right" >
-                            <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'epressingApp.produit.home.search' | translate }}">
-                            <span  class="input-group-btn width-min" >
-                                <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                            <span class="input-group-btn width-min" ng-if="vm.currentSearch">
-                                <button class="btn btn-info" ng-click="vm.clear()">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="col-sm-12">
+    <div class="row">    
+        <div class="col-sm-12 col-xs-12" style="margin-top: 15px;">    
+            <jhi-alert></jhi-alert>
         </div>
-    <br/>&nbsp;
-    
-    <!-- div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="libelle"><span data-translate="epressingApp.produit.libelle">Libelle</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="photo"><span data-translate="epressingApp.produit.photo">Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="categorie.id"><span data-translate="epressingApp.produit.categorie">Categorie</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="produit in vm.produits track by produit.id">
-                    <td><a ui-sref="produit-detail({id:produit.id})">{{produit.id}}</a></td>
-                    <td>{{produit.libelle}}</td>
-                    <td>
-                        <a ng-if="produit.photo" ng-click="vm.openFile(produit.photoContentType, produit.photo)" data-translate="entity.action.open">open</a>
-                        <span ng-if="produit.photo">{{produit.photoContentType}}, {{vm.byteSize(produit.photo)}}</span>
-                    </td>
-                    <td>
-                        <a ui-sref="categorie-detail({id:produit.categorie.id})">{{produit.categorie.libelle}}</a>
-                    </td>
-                    <td class="text-right">
-                            <button type="submit"
-                                    ui-sref="produit.addToCart({id:produit.id})"
-                                    class="btn btn-warning btn-sm">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                                <span class="hidden-sm-down" data-translate="epressingApp.produit.home.addToCart"></span>
-                            </button> &nbsp                       
-                            <button type="submit"
-                                    ui-sref="produit-detail({id:produit.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                            </button> &nbsp
-                            <button type="submit"
-                                    ui-sref="produit.edit({id:produit.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
-                            </button> &nbsp
-                            <button type="submit"
-                                    ui-sref="produit.delete({id:produit.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div -->
-    <div class="col-sm-12">
-            <div class="row">
-    <div class="col-sm-4" ng-repeat="produitDTO in vm.produits track by produitDTO.produit.id">
-          <div class="panel panel-default">
+    </div>
+</div>
 
-            <a href class="text-muted m-t-sm m-l inline"  ng-click="data=[40, 40, 20]"><i class="icon-pie-chart"></i></a>
-            <div class="text-left wrapper m-b-sm">
-                <ul class="list-group no-radius">
-                    <li class="list-group-item">
-                         <b> {{produitDTO.produit.categorie.libelle}} -- {{produitDTO.produit.libelle | uppercase}} </b>
-                        <span class="pull-right">
-                            <button  has-authority="ROLE_ADMIN" type="submit"
-                                ui-sref="produit-detail({id:produitDTO.produit.id})"
-                                class="btn btn-info btn-xs">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                        </button>&nbsp
-                            <button  has-authority="ROLE_ADMIN" type="submit"
-                                ui-sref="produit.edit({id:produitDTO.produit.id})"
-                                class="btn btn-xs btn-primary">
-                            <span class="glyphicon glyphicon-pencil"></span>
+<div class="col-sm-12">
+    <div class="wrapper-md bg-white-only b-b">
+        <div  class="row wrapper">
+            <div class="col-sm-3 col-xs-3">
+                <button has-authority="ROLE_ADMIN"  class="btn btn-sm btn-primary" ui-sref="produit.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="epressingApp.produit.home.createLabel">
+                        Create new Produit
+                    </span>
+                </button>
+            </div>
+            <div class="col-sm-6">
+            </div>
+            <div class=" col-sm-3 col-xs-3">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="input-sm form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'epressingApp.produit.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-sm btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
                             </button>
-                        </span>                        
-                        
-                    </li>
-              <div ui-refresh="data" ui-jq="sparkline" ui-options="
-              [55, 30, 15],
-              {
-                type:'pie',
-                height:126,
-                sliceColors:['{{app.color.primary}}','{{app.color.info}}','{{app.color.warning}}']
-              }
-              " class="sparkline inline"> </div>
-            </div>            
-              </ul>              
-                  <ul class="list-group no-radius">
-                        <li class="list-group-item" ng-repeat="tarif in produitDTO.tarifs track by tarif.id">
-                            <span class="pull-right">                               
-                                <button type="submit"
-                                    ui-sref="produit.addToCart({idTarif:tarif.id})"
-                                    class="btn btn-warning btn-xs">
-                                <span class="glyphicon glyphicon-shopping-cart  "></span>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-sm btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
                             </button>
-                            </span>
-                            <span class="label bg-info">#</span>
-                            {{tarif.operation.libelle | uppercase }} : {{tarif.montant}}
-                        </li>
-                  </ul>
-          </div>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
+        <div class="row wrapper">
+            <div class="col-md-3" ng-repeat="produitDTO in vm.produits track by produitDTO.produit.id">
+                <div class="panel b-a">
+                    <a ui-sref="produit-detail({id:produitDTO.produit.id})">
+                        <div class="text-center">
+                            <img data-ng-src="{{'data:' + produitDTO.produit.photoContentType + ';base64,' + produitDTO.produit.photo}}" class="img-shop">
+                        </div>
+                    </a>
+                    <span class="clear"></span>
+                    <div class="panel-footer bg-primary">          
+                        <span class="text-lt"> {{produitDTO.produit.categorie.libelle}} - {{produitDTO.produit.libelle}} </span>
+                        <button has-authority="ROLE_ADMIN" type="submit" ui-sref="produit.edit({id:produitDTO.produit.id})" class="btn btn-xs btn-primary pull-right">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
+        <div class="row wrapper">
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-4 hidden-xs">              
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <jhi-item-count class="text-muted inline m-t-sm m-b-sm" page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+                        </div>
+                        <div class="col-sm-4 text-right text-center-xs">                
+                            <uib-pagination class="pagination-sm  m-t-none m-b-none" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                        </div>
+                    </div>
+                </footer>
+            
+        </div>
+
     </div>
-            </div>
-    </div>
-    
-    </div>
-    
 </div>
