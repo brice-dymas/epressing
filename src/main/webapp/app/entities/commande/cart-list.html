@@ -13,7 +13,7 @@
 <div class="col-sm-12">
     <div class="row">
         <div class="col-sm-4 col-xs-4">
-            <button class="btn btn-sm btn-primary" ui-sref="commande.new" >
+            <button ng-if="$root.commandeForm.ligneCommandes.length > 0"  class="btn btn-sm btn-primary" ui-sref="commande.new" >
                 <i class="fa fa-credit-card-alt" aria-hidden="true"></i> 
                 <span class="hidden-xs-down"  data-translate="epressingApp.cart.checkout">
                     Aller Payer
@@ -21,7 +21,6 @@
             </button>
         </div>
     </div> 
-
 <br/>
     <div class="row">
         <div class="col-sm-12">
