@@ -171,7 +171,7 @@
             }]
         })
         .state('produit.addToCart', {
-            parent: 'produit',
+            parent: 'produit-detail', 
             url: '/addToCart/{idTarif}',
             data: {
                 //authorities: ['ROLE_USER']
@@ -205,7 +205,7 @@
                                     id: null,
                                     couleur: null,
                                     marque: null,
-                                    libelle: null
+                                    libelle: null 
                                 }
                             };
                         },
@@ -214,9 +214,9 @@
                         }],                        
                     }
                 }).result.then(function() {
-                    $state.go('produit', null, { reload: 'produit' });
+                    $state.go('produit-detail', null, { reload: 'produit-detail' });
                 }, function() {
-                    $state.go('produit');
+                    $state.go('produit-detail');
                 });
             }]
         })
