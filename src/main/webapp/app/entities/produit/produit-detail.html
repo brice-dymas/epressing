@@ -58,11 +58,11 @@
                                 class="btn btn-sm btn-info">
                             <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
                         </button> 
-                        <button type="button" ui-sref="produit-detail.edit({id:vm.produit.id})" class="btn btn-sm btn-primary">
+                        <button has-authority="ROLE_ADMIN" type="button" ui-sref="produit-detail.edit({id:vm.produit.id})" class="btn btn-sm btn-primary">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
                         </button> 
-                        <button type="button" ui-sref="produit-detail.addTarif" class="btn btn-sm btn-primary">
+                        <button has-authority="ROLE_ADMIN" type="button" ui-sref="produit-detail.addTarif" class="btn btn-sm btn-primary">
                             <span class="glyphicon glyphicon-plus"></span>
                             <span class="hidden-sm-down"> Add Tariff</span>
                         </button>        

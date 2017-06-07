@@ -12,7 +12,7 @@
 
 <div class="col-sm-12">
     <div class="wrapper-md bg-white-only b-b">
-        <div  class="row wrapper">
+        <div  class="row">
             <div class="col-sm-3 col-xs-3">
                 <button has-authority="ROLE_ADMIN"  class="btn btn-sm btn-primary" ui-sref="produit.new" >
                     <span class="glyphicon glyphicon-plus"></span>
@@ -41,14 +41,16 @@
                 </form>
             </div>
         </div>
-        <div class="row wrapper">
-            <div class="col-md-3" ng-repeat="produitDTO in vm.produits track by produitDTO.produit.id">
-                <div class="panel b-a">
+        <br>
+        <div class="row" >
+            <div class="col-xs-6 col-md-3" ng-repeat="produitDTO in vm.produits track by produitDTO.produit.id">                
+                    <div class="thumbnail">
                     <a ui-sref="produit-detail({id:produitDTO.produit.id})">
                         <div class="text-center">
-                            <img data-ng-src="{{'data:' + produitDTO.produit.photoContentType + ';base64,' + produitDTO.produit.photo}}" class="img-shop">
+                            <img height="150" width="320" data-ng-src="{{'data:' + produitDTO.produit.photoContentType + ';base64,' + produitDTO.produit.photo}}" class="img-shop">
                         </div>
                     </a>
+                
                     <span class="clear"></span>
                     <div class="panel-footer bg-primary">          
                         <span class="text-lt"> {{produitDTO.produit.categorie.libelle}} - {{produitDTO.produit.libelle}} </span>
@@ -56,9 +58,10 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                     </div>
-                </div>
+                    </div>
             </div>
-        </div>
+            </div>
+        
         <div class="row wrapper">
                 <footer class="panel-footer">
                     <div class="row">

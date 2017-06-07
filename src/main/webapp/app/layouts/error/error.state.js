@@ -45,6 +45,24 @@
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('needauthentification', {
+                parent: 'app',
+                url: '/authentification',
+                data: {
+                    authorities: []
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/layouts/error/needauthentification.html'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('error');
+                        return $translate.refresh();
+                    }]
+                }
             });
     }
 })();

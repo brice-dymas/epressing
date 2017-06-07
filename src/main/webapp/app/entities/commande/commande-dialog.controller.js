@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('CommandeDialogController', CommandeDialogController);
 
-    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope','$state'],'CommandeForm';
+    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope','$state','$localStorage'];
 
-    function CommandeDialogController ($timeout, $scope, $stateParams, entity, Commande, CarteBancaire, Utilisateur,$rootScope, $state, CommandeForm) {
+    function CommandeDialogController ($timeout, $scope, $stateParams, entity, Commande, CarteBancaire, Utilisateur,$rootScope, $state,$localStorage) {
         var vm = this;
 
         vm.commande = entity; 
@@ -41,6 +41,7 @@
         function resetCart(){
             var taille = $rootScope.commandeForm.ligneCommandes.length;
             $rootScope.commandeForm.ligneCommandes.splice(0,taille);
+            $localStorage.commandeForm =$rootScope.commandeForm;
         }
 
         function save () {
