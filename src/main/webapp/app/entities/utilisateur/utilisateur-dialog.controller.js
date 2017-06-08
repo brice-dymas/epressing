@@ -5,16 +5,15 @@
         .module('epressingApp')
         .controller('UtilisateurDialogController', UtilisateurDialogController);
 
-    UtilisateurDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Utilisateur', 'User', 'TypeUtilisateur'];
+    UtilisateurDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Utilisateur', 'User'];
 
-    function UtilisateurDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Utilisateur, User, TypeUtilisateur) {
+    function UtilisateurDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Utilisateur, User) {
         var vm = this;
 
         vm.utilisateur = entity;
         vm.clear = clear;
         vm.save = save;
         vm.users = User.query();
-        vm.typeutilisateurs = TypeUtilisateur.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

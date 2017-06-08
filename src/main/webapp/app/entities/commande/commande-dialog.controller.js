@@ -5,12 +5,13 @@
         .module('epressingApp')
         .controller('CommandeDialogController', CommandeDialogController);
 
-    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope','$state','$localStorage'];
+    CommandeDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur','$rootScope','$state','$localStorage','Principal'];
 
-    function CommandeDialogController ($timeout, $scope, $stateParams, entity, Commande, CarteBancaire, Utilisateur,$rootScope, $state,$localStorage) {
+    function CommandeDialogController ($timeout, $scope, $stateParams, entity, Commande, CarteBancaire, Utilisateur,$rootScope, $state,$localStorage,Principal) {
         var vm = this;
-
+       
         vm.commande = entity; 
+        vm.setUserToCommand = setUserToCommand;
         vm.ligneCommandes = $rootScope.commandeForm.ligneCommandes;
         vm.total = total;
         vm.clear = clear;
@@ -22,7 +23,12 @@
         vm.maCommandeForm ={};
         vm.resetCart = resetCart;
         vm.commande.netAPayer = vm.total();
-
+        
+        function setUserToCommand(){
+            Principal.identity().then(function(user){
+                $scope.commandeForm.commande.user = user;
+            });
+        }
         function total () {
             var resultat = 0;
             for (var i = 0; i < vm.ligneCommandes.length; i++) {
@@ -51,6 +57,7 @@
                 alert('Mise a jour non configurée');
             } else {               
                 $scope.commandeForm.ligneCommandes = $rootScope.commandeForm.ligneCommandes;
+                vm.setUserToCommand();
                 vm.resultat = Commande.saveCommand($scope.commandeForm, onSaveSuccess, onSaveError);
                 vm.resultat.$promise.then(function(data){
                     resetCart();

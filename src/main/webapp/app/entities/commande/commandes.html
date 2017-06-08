@@ -64,6 +64,7 @@
                         <th jh-sort-by="adresseCueillette"><span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th jh-sort-by="dateLivraison"><span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th jh-sort-by="adresseLivraison"><span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="user.id"><span data-translate="epressingApp.commande.client">Client</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -74,25 +75,26 @@
                         <td>{{commande.adresseCueillette}}</td>
                         <td>{{commande.dateLivraison| date:'dd/MM/yyyy HH:mm'}}</td>
                         <td>{{commande.adresseLivraison}}</td>
+                        <td>{{commande.user.firstName}} {{commande.user.lastName}}</td>
                         <td class="text-right">
                             <div class="btn-group flex-btn-group-container">
                                 <button type="submit"
                                         ui-sref="commande-detail({id:commande.id})"
                                         class="btn btn-info btn-sm">
                                     <span class="glyphicon glyphicon-eye-open"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                                    <!--<span class="hidden-sm-down" data-translate="entity.action.view"></span>-->
                                 </button>&nbsp;
                                 <button type="submit"
                                         ui-sref="commande.edit({id:commande.id})"
                                         class="btn btn-primary btn-sm">
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                                    <!--<span class="hidden-sm-down" data-translate="entity.action.edit"></span>-->
                                 </button>&nbsp;
                                 <button type="submit"
                                         ui-sref="commande.delete({id:commande.id})"
                                         class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-remove-circle"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                    <!--<span class="hidden-sm-down" data-translate="entity.action.delete"></span>-->
                                 </button>
                             </div>
                         </td>

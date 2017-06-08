@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
-        <addForeignKeyConstraint baseColumnNames="type_id"
-                                 baseTableName="utilisateur"
-                                 constraintName="fk_utilisateur_type_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="type_utilisateur"/>
-
     </changeSet>
 </databaseChangeLog>

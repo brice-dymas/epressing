@@ -63,8 +63,9 @@ public class Commande implements Serializable {
     @ManyToOne
     private CarteBancaire carteBancaire;
 
-    @ManyToOne
-    private Utilisateur client;
+    @ManyToOne(optional = false)
+    @NotNull
+    private User user;
 
     public Long getId() {
         return id;
@@ -217,17 +218,17 @@ public class Commande implements Serializable {
         this.carteBancaire = carteBancaire;
     }
 
-    public Utilisateur getClient() {
-        return client;
+    public User getUser() {
+        return user;
     }
 
-    public Commande client(Utilisateur utilisateur) {
-        this.client = utilisateur;
+    public Commande user(User user) {
+        this.user = user;
         return this;
     }
 
-    public void setClient(Utilisateur utilisateur) {
-        this.client = utilisateur;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

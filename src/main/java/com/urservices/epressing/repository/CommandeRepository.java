@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface CommandeRepository extends JpaRepository<Commande,Long> {
 
+    @Query("select commande from Commande commande where commande.user.login = ?#{principal.username}")
+    List<Commande> findByUserIsCurrentUser();
+
 }

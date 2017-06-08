@@ -3,6 +3,7 @@ package com.urservices.epressing.web.rest;
 import com.urservices.epressing.EpressingApp;
 
 import com.urservices.epressing.domain.Commande;
+import com.urservices.epressing.domain.User;
 import com.urservices.epressing.repository.CommandeRepository;
 import com.urservices.epressing.service.CommandeService;
 import com.urservices.epressing.repository.search.CommandeSearchRepository;
@@ -128,6 +129,11 @@ public class CommandeResourceIntTest {
                 .adresseCueillette(DEFAULT_ADRESSE_CUEILLETTE)
                 .adresseLivraison(DEFAULT_ADRESSE_LIVRAISON)
                 .adresseFacturation(DEFAULT_ADRESSE_FACTURATION);
+        // Add required entity
+        User user = UserResourceIntTest.createEntity(em);
+        em.persist(user);
+        em.flush();
+        commande.setUser(user);
         return commande;
     }
 

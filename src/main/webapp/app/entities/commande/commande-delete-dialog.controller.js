@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('CommandeDeleteController',CommandeDeleteController);
 
-    CommandeDeleteController.$inject = ['$uibModalInstance', 'entity', 'Commande','$rootScope'];
+    CommandeDeleteController.$inject = ['$uibModalInstance', 'entity', 'Commande'];
 
-    function CommandeDeleteController($uibModalInstance, entity, Commande, $rootScope) {
+    function CommandeDeleteController($uibModalInstance, entity, Commande) {
         var vm = this;
 
         vm.commande = entity;

@@ -103,10 +103,11 @@ public class ProduitResource {
         Page<Produit> page = produitService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/produits");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        
     }
 
     /**
-     * GET  /produitsTarifs : get all the produits.
+     * GET  /produit/{id}/tarifs : get all the produits.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of produits in body
@@ -127,7 +128,7 @@ public class ProduitResource {
             }*/
             log.debug("---------------------------------------------------------------  \n ----------------------");
         }
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/produits/produitsTarifs");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/produits/produit/{id}/tarifs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -177,6 +178,4 @@ public class ProduitResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/produits");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
-
 }

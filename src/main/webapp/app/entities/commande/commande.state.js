@@ -49,41 +49,9 @@
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
-            } 
+            }
         })
         .state('commande-detail', {
-            parent: 'commande',
-            url: '/commandeComplete/{id}',
-            data: {
-                authorities: ['ROLE_USER'],
-                pageTitle: 'epressingApp.commande.detail.title'
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/commande/commande-detail.html',
-                    controller: 'CommandeDetailController',
-                    controllerAs: 'vm'
-                }
-            },
-            resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('commande');
-                    return $translate.refresh();
-                }],
-                entity: ['$stateParams', 'Commande', function($stateParams, Commande) {
-                    return Commande.getCommandeComplete({id : $stateParams.id}).$promise;
-                }],
-                previousState: ["$state", function ($state) {
-                    var currentStateData = {
-                        name: $state.current.name || 'commande',
-                        params: $state.params,
-                        url: $state.href($state.current.name, $state.params)
-                    };
-                    return currentStateData;
-                }]
-            }
-        }) 
-         /*.state('commande-detail', {
             parent: 'commande',
             url: '/commande/{id}',
             data: {
@@ -114,7 +82,7 @@
                     return currentStateData;
                 }]
             }
-        })*/
+        })
         .state('commande-detail.edit', {
             parent: 'commande-detail',
             url: '/detail/edit',
@@ -175,45 +143,7 @@
                     };
             }]
         }
-    })
-     
-       /* .state('commande.new', {
-            parent: 'commande',
-            url: '/new',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/commande/commande-dialog.html',
-                    controller: 'CommandeDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {  
-                            return {
-                                dateCommande: new Date(),
-                                dateFacture: new Date(),
-                                dateFacturation: new Date(),
-                                dateCueillette: new Date(),
-                                dateLivraison: new Date(),
-                                netAPayer: 0,
-                                etat: 'En attente de cueillette',
-                                adresseCueillette: null,
-                                adresseLivraison: null,
-                                adresseFacturation: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('commande', null, { reload: 'commande' });
-                }, function() {
-                    $state.go('commande');
-                });
-            }]
-        })*/
+        })
         .state('commande.edit', {
             parent: 'commande',
             url: '/{id}/edit',

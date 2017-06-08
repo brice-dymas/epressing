@@ -14,7 +14,7 @@
         vm.clear = clear;
         vm.save = save;
         vm.operations = Operation.query();
-        vm.produits = Produit.query();
+        vm.produits = Produit.findAll();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
