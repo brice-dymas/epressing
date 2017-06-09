@@ -9,9 +9,11 @@
 
     function CommandeSearch($resource) {
         var resourceUrl =  'api/_search/commandes/:id';
+        var commandsOfCurrentUser = 'api/commandes/user/:id'
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
+            'query': { method: 'GET', isArray: true},
+            'getAllCommandsOfCurrentUser': { url: commandsOfCurrentUser, method: 'GET', isArray: true},
         });
     }
 })();

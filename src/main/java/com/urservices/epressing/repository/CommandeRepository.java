@@ -2,6 +2,7 @@ package com.urservices.epressing.repository;
 
 import com.urservices.epressing.domain.Commande;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -12,7 +13,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface CommandeRepository extends JpaRepository<Commande,Long> {
 
-    @Query("select commande from Commande commande where commande.user.login = ?#{principal.username}")
-    List<Commande> findByUserIsCurrentUser();
+    /*@Query("select commande from Commande commande where commande.user.login = ?#{principal.username}")
+    List<Commande> findByUserIsCurrentUser();*/
+     @Query("select commande from Commande commande where commande.user.id= :userID")
+    List<Commande> findByUserIsCurrentUser(@Param("userID") Long userID);
 
 }

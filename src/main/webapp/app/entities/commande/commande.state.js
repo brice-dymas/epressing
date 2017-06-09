@@ -51,6 +51,51 @@
                 }]
             }
         })
+        .state('commande-current-user', {
+            parent: 'entity',
+            url: '/my-orders/user/{id}?page&sort&search',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'epressingApp.commande.home.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/commande/commandes-current-user.html',
+                    controller: 'CommandeCurrentUserController',
+                    controllerAs: 'vm'
+                }
+            },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                         /*entity: ['Commande', function(Commande) {
+                            return Commande.getAllCommandsOfCurrentUser({id : $stateParams.id}).$promise;
+                        }],*/
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('commande');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }]
+            }
+        })
         .state('commande-detail', {
             parent: 'commande',
             url: '/commande/{id}',

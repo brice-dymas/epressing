@@ -8,11 +8,13 @@
 
     function Commande ($resource, DateUtils) {
         var resourceUrl =  'api/commandes/:id';
+        var commandsOfCurrentUser = 'api/commandes/user/:id'
         var operationUrl = 'api/commandes/commandeForms';
         var detailCommandeUrl = 'api/commandes/commandeComplete/:id'
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'getAllCommandsOfCurrentUser': { url: commandsOfCurrentUser, method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

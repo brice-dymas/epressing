@@ -7,6 +7,7 @@ import com.urservices.epressing.repository.search.CommandeSearchRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,27 @@ public class CommandeServiceImpl implements CommandeService{
         Commande result = commandeRepository.save(commande);
         commandeSearchRepository.save(result);
         return result;
+    }
+
+     /**
+     *  Get all the commandes.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+   /* @Override
+    public Page<Commande> findByUserIsCurrentUser(Pageable pageable){
+        List<Commande> commandes = commandeRepository.findByUserIsCurrentUser();     
+        log.debug("CommandeServiceImpl on a trouvé {} commandes pour lutilisateur courant ", commandes.size());
+        long total = commandes.size();
+        return new PageImpl<Commande>(commandes, pageable, total);
+    }*/
+     @Override
+    public Page<Commande> findByUserIsCurrentUser(long id, Pageable pageable){
+        List<Commande> commandes = commandeRepository.findByUserIsCurrentUser(id);     
+        log.debug("CommandeServiceImpl on a trouvé {} commandes pour lutilisateur courant ", commandes.size());
+        long total = commandes.size();
+        return new PageImpl<Commande>(commandes, pageable, total);
     }
 
     /**
