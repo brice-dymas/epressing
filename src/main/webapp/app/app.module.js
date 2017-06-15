@@ -27,7 +27,10 @@
         translationHandler.initialize(); 
 
         $rootScope.commandeForm = $localStorage.commandeForm;
-        $rootScope.userConnected = {};
+        $rootScope.userConnected = $localStorage.userConnected;
+        if ($rootScope.userConnected == null) {
+            $rootScope.userConnected = {};
+        }
         if ($rootScope.commandeForm == null) {
             $rootScope.commandeForm = {
                 'commande': null,

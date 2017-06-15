@@ -47,7 +47,7 @@
         function resetCart(){
             var taille = $rootScope.commandeForm.ligneCommandes.length;
             $rootScope.commandeForm.ligneCommandes.splice(0,taille);
-            $localStorage.commandeForm =$rootScope.commandeForm;
+            $localStorage.commandeForm = $rootScope.commandeForm;
         }
 
         function save () {

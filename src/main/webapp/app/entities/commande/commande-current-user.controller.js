@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('CommandeCurrentUserController', CommandeCurrentUserController);
 
-    CommandeCurrentUserController.$inject = ['$state', 'Commande', 'CommandeSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', 'Principal', '$rootScope'];
+    CommandeCurrentUserController.$inject = ['$state', 'Commande', 'CommandeSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', 'Principal', '$localStorage'];
 
-    function CommandeCurrentUserController($state, Commande, CommandeSearch, ParseLinks, AlertService, paginationConstants, pagingParams, Principal, $rootScope) {
+    function CommandeCurrentUserController($state, Commande, CommandeSearch, ParseLinks, AlertService, paginationConstants, pagingParams, Principal, $localStorage) {
 
         var vm = this;
 
@@ -27,7 +27,6 @@
 
         
         function loadAll () {
-            console.log('dans cmd-user-user controler and user = ',$rootScope.userConnected);
             if (pagingParams.search) {
                 CommandeSearch.getAllCommandsOfCurrentUser({
                      
@@ -37,8 +36,10 @@
                     sort: sort()
                 }, onSuccess, onError);
             } else {
+                console.log('id userConnected is' , $localStorage.userConnected.id);
                 Commande.getAllCommandsOfCurrentUser({
-                    id: $rootScope.userConnected.id, 
+                    
+                    id: $localStorage.userConnected.id, 
                     page: pagingParams.page - 1,
                     size: vm.itemsPerPage,
                     sort: sort()

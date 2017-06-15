@@ -14,6 +14,8 @@
         "detail": {
             "title": "User"
         },
+        "infos": "My Profile",
+        "edit": "Edit my Profile",
         "login": "Login",
         "firstName": "First name",
         "lastName": "Last name",

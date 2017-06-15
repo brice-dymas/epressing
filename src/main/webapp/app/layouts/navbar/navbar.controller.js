@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$rootScope'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$localStorage'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,$rootScope) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,$localStorage) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -28,10 +28,11 @@
             collapseNavbar();
             LoginService.open();
         }
-
+        console.log($localStorage.userConnected);
         function logout() {
             collapseNavbar();
             Auth.logout();
+            $localStorage.userConnected = null;
             $state.go('home');
         }
 
