@@ -12,7 +12,7 @@
 
         vm.error = null;
         vm.save = save;
-        vm.settingsAccount = null;
+        vm.utilisateur = null;
         vm.success = null;
 
         /**
@@ -34,15 +34,15 @@
         });
 
         function save () {
-            Auth.updateAccount(vm.settingsAccount).then(function() {
+            Auth.updateAccount(vm.utilisateur).then(function() {
                 vm.error = null;
                 vm.success = 'OK';
                 Principal.identity(true).then(function(account) {
-                    vm.settingsAccount = copyAccount(account);
+                    vm.utilisateur = copyAccount(account);
                 });
                 JhiLanguageService.getCurrent().then(function(current) {
-                    if (vm.settingsAccount.langKey !== current) {
-                        $translate.use(vm.settingsAccount.langKey);
+                    if (vm.utilisateur.user.langKey !== current) {
+                        $translate.use(vm.utilisateur.user.langKey);
                     }
                 });
                 
