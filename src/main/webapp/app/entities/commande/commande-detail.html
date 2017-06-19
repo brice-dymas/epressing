@@ -1,5 +1,120 @@
+<div class="bg-light lter b-b wrapper-md col-md-offset-1">
+    <h1 class="m-n font-thin h3" data-translate="epressingApp.commande.detail.title">Commande </h1>
+    <span data-translate="epressingApp.commande.netAPayer">Net A Payer </span>
+    <span>{{vm.commandeForm.commande.netAPayer}} CAD </span>
+</div>
+    <hr>
+<div class="container">
+    <div class="col-sm-12">
+        <div class="row">    
+            <div class="col-sm-12 col-xs-12">    
+                <jhi-alert-error></jhi-alert-error>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="col-sm-12">
+  <table class="table table-bordered">
+  <thead>
+    <tr class="btn-info" >
+      <th>
+          <span data-translate="epressingApp.commande.dateCommande">Date Commande</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.dateCueillette">Date Cueillette</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.dateLivraison">Date Livraison</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+          <span>{{vm.commandeForm.commande.dateCommande | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.dateCueillette | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+      <th> 
+          <span>{{vm.commandeForm.commande.dateLivraison | date:'dd-MM-yyyy HH:mm'}}</span>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<hr>
 
-<div>
+<table class="table table-bordered">
+  <thead>
+    <tr class="btn-info" >
+      <th>
+          <span data-translate="epressingApp.commande.etat">Etat</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.adresseCueillette">Adresse Cueillette</span>
+      </th>
+      <th>
+          <span data-translate="epressingApp.commande.adresseLivraison">Adresse Livraison</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+         <span>{{vm.commandeForm.commande.etat}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.adresseCueillette}}</span>
+      </th>
+      <th>
+          <span>{{vm.commandeForm.commande.adresseLivraison}}</span>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <tr class="btn-success" > 
+                <h2 data-translate="epressingApp.cart.title" >Pannier</h2>
+            </tr>
+            <thead>
+                <tr class="btn-success" >                    
+                    <th><span data-translate="epressingApp.cart.produit">Produit</span> </th>
+                    <th><span data-translate="epressingApp.cart.caracteristique.marque">Marque</span></th>
+                    <th><span data-translate="epressingApp.cart.caracteristique.couleur">Couleur</span></th>
+                    <th><span data-translate="epressingApp.cart.operation">Operation</span></th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="ligneCommande in vm.ligneCommandes track by ligneCommande.id ">
+                    <td>{{ligneCommande.produit.libelle}}</td>
+                    <td>{{ligneCommande.caracteristique.marque}}</td>
+                    <td>{{ligneCommande.caracteristique.couleur}}</td>
+                    <td>{{ligneCommande.operation.libelle}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+        </button>
+        <button type="button" ui-sref="commande-detail.edit({id:vm.commande.id})" class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
+    <hr>
+    <br>
+    
+</div>
+</div>
+<!--<div>
     <h2><span data-translate="epressingApp.commande.detail.title">Commande</span> {{vm.commande.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
@@ -64,4 +179,4 @@
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
     </button>
-</div>
+</div>-->

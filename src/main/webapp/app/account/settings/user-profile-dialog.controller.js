@@ -3,18 +3,27 @@
 
     angular
         .module('epressingApp')
-        .controller('SettingsController', SettingsController);
+        .controller('UserProfileDialogController', UserProfileDialogController);
 
-    SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate'];
+    UserProfileDialogController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate', '$scope', '$stateParams', '$uibModalInstance', ];
 
-    function SettingsController (Principal, Auth, JhiLanguageService, $translate) {
+    function UserProfileDialogController (Principal, Auth, JhiLanguageService, $translate, $scope, $stateParams, $uibModalInstance) {
         var vm = this;
 
         vm.error = null;
+        vm.clear = clear;
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
 
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
+        }
+        function onSaveSuccess (result) {
+            $scope.$emit('epressingApp:utilisateurUpdate', result);
+            $uibModalInstance.close(result);
+        }
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
          */
@@ -37,8 +46,9 @@
             Auth.updateAccount(vm.settingsAccount).then(function() {
                 vm.error = null;
                 vm.success = 'OK';
-                Principal.identity(true).then(function(account) {
+                Principal.identity(true).then(function(account) {                    
                     vm.settingsAccount = copyAccount(account);
+                    $uibModalInstance.dismiss('cancel');
                 });
                 JhiLanguageService.getCurrent().then(function(current) {
                     if (vm.settingsAccount.langKey !== current) {

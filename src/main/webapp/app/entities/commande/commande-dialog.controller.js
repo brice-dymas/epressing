@@ -67,7 +67,8 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('epressingApp:commandeUpdate', result);
-             $state.go('commande');
+             $state.go('commande-current-user');
+/*             $state.go('commande');commande-current-user*/
             vm.isSaving = false;
         }
         function onSaveError () {
