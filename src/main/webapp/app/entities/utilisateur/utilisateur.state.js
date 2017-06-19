@@ -47,6 +47,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('utilisateur');
                     $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('register');
                     return $translate.refresh();
                 }]
             }
@@ -112,7 +113,8 @@
             parent: 'utilisateur',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: []
+                /*authorities: ['ROLE_USER']*/
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -124,11 +126,8 @@
                     resolve: {
                         entity: function () {
                             return {
-                                nom: null,
-                                prenom: null,
                                 adresse: null,
                                 telephone: null,
-                                email: null,
                                 id: null
                             };
                         }

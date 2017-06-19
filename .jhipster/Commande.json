@@ -8,10 +8,15 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipName": "user",
+            "otherEntityName": "user",
             "relationshipType": "many-to-one",
-            "relationshipName": "client",
-            "otherEntityName": "utilisateur",
-            "otherEntityField": "id"
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "commande"
         }
     ],
     "fields": [
@@ -69,8 +74,8 @@
         }
     ],
     "changelogDate": "20170321170421",
-    "entityTableName": "commande",
     "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "commande",
+    "pagination": "pagination"
 }

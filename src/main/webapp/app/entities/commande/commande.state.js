@@ -49,7 +49,52 @@
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
-            } 
+            }
+        })
+        .state('commande-current-user', {
+            parent: 'entity',
+            url: '/my-orders/user/{id}?page&sort&search',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'epressingApp.commande.home.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/commande/commandes-current-user.html',
+                    controller: 'CommandeCurrentUserController',
+                    controllerAs: 'vm'
+                }
+            },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                         /*entity: ['Commande', function(Commande) {
+                            return Commande.getAllCommandsOfCurrentUser({id : $stateParams.id}).$promise;
+                        }],*/
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('commande');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }]
+            }
         })
         .state('commande-detail', {
             parent: 'commande',
@@ -83,7 +128,7 @@
                 }]
             }
         }) 
-         /*.state('commande-detail', {
+        /*.state('commande-detail', {
             parent: 'commande',
             url: '/commande/{id}',
             data: {
@@ -175,45 +220,7 @@
                     };
             }]
         }
-    })
-     
-       /* .state('commande.new', {
-            parent: 'commande',
-            url: '/new',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/commande/commande-dialog.html',
-                    controller: 'CommandeDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {  
-                            return {
-                                dateCommande: new Date(),
-                                dateFacture: new Date(),
-                                dateFacturation: new Date(),
-                                dateCueillette: new Date(),
-                                dateLivraison: new Date(),
-                                netAPayer: 0,
-                                etat: 'En attente de cueillette',
-                                adresseCueillette: null,
-                                adresseLivraison: null,
-                                adresseFacturation: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('commande', null, { reload: 'commande' });
-                }, function() {
-                    $state.go('commande');
-                });
-            }]
-        })*/
+        })
         .state('commande.edit', {
             parent: 'commande',
             url: '/{id}/edit',

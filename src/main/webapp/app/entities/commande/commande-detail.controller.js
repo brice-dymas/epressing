@@ -5,14 +5,15 @@
         .module('epressingApp')
         .controller('CommandeDetailController', CommandeDetailController);
 
-    CommandeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Commande', 'CarteBancaire', 'Utilisateur'];
+    CommandeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Commande', 'CarteBancaire', 'User'];
 
-    function CommandeDetailController($scope, $rootScope, $stateParams, previousState, entity, Commande, CarteBancaire, Utilisateur) {
-        var vm = this;
-
+    function CommandeDetailController($scope, $rootScope, $stateParams, previousState, entity, Commande, CarteBancaire, User) {
+        var vm = this; 
         vm.commandeForm = entity;
         vm.ligneCommandes = vm.commandeForm.ligneCommandes;
-        vm.previousState = previousState.name;
+
+        vm.commande = entity;
+        vm.previousState = previousState.name;  
 
         var unsubscribe = $rootScope.$on('epressingApp:commandeUpdate', function(event, result) {
             vm.commande = result;

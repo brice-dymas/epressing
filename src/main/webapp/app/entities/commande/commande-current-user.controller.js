@@ -3,15 +3,14 @@
 
     angular
         .module('epressingApp')
-        .controller('ProduitController', ProduitController);
+        .controller('CommandeCurrentUserController', CommandeCurrentUserController);
 
-    ProduitController.$inject = ['$state', 'DataUtils', 'Produit', 'ProduitSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$rootScope'];
+    CommandeCurrentUserController.$inject = ['$state', 'Commande', 'CommandeSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', 'Principal', '$localStorage'];
 
-    function ProduitController($state, DataUtils, Produit, ProduitSearch, ParseLinks, AlertService, paginationConstants, pagingParams,$rootScope) {
+    function CommandeCurrentUserController($state, Commande, CommandeSearch, ParseLinks, AlertService, paginationConstants, pagingParams, Principal, $localStorage) {
 
         var vm = this;
 
-        vm.ligneCommandes = $rootScope.ligneCommandes;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -22,19 +21,25 @@
         vm.loadAll = loadAll;
         vm.searchQuery = pagingParams.search;
         vm.currentSearch = pagingParams.search;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;        
-        loadAll();        
+
+        
+        loadAll();
+
+        
         function loadAll () {
             if (pagingParams.search) {
-                ProduitSearch.query({
+                CommandeSearch.getAllCommandsOfCurrentUser({
+                     
                     query: pagingParams.search,
                     page: pagingParams.page - 1,
                     size: vm.itemsPerPage,
                     sort: sort()
                 }, onSuccess, onError);
             } else {
-                Produit.query({
+                console.log('id userConnected is' , $localStorage.userConnected.id);
+                Commande.getAllCommandsOfCurrentUser({
+                    
+                    id: $localStorage.userConnected.id, 
                     page: pagingParams.page - 1,
                     size: vm.itemsPerPage,
                     sort: sort()
@@ -51,7 +56,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.produits = data;
+                vm.commandes = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -79,7 +84,7 @@
             vm.links = null;
             vm.page = 1;
             vm.predicate = '_score';
-            vm.reverse = false; 
+            vm.reverse = false;
             vm.currentSearch = searchQuery;
             vm.transition();
         }

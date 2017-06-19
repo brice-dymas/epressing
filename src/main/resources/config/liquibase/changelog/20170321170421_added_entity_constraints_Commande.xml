@@ -14,11 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="carte_bancaire"/>
 
-        <addForeignKeyConstraint baseColumnNames="client_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="commande"
-                                 constraintName="fk_commande_client_id"
+                                 constraintName="fk_commande_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="utilisateur"/>
+                                 referencedTableName="jhi_user"/>
 
     </changeSet>
 </databaseChangeLog>

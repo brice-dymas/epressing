@@ -4,14 +4,6 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row jh-entity-details">
-        <dt><span data-translate="epressingApp.utilisateur.nom">Nom</span></dt>
-        <dd>
-            <span>{{vm.utilisateur.nom}}</span>
-        </dd>
-        <dt><span data-translate="epressingApp.utilisateur.prenom">Prenom</span></dt>
-        <dd>
-            <span>{{vm.utilisateur.prenom}}</span>
-        </dd>
         <dt><span data-translate="epressingApp.utilisateur.adresse">Adresse</span></dt>
         <dd>
             <span>{{vm.utilisateur.adresse}}</span>
@@ -20,17 +12,9 @@
         <dd>
             <span>{{vm.utilisateur.telephone}}</span>
         </dd>
-        <dt><span data-translate="epressingApp.utilisateur.email">Email</span></dt>
-        <dd>
-            <span>{{vm.utilisateur.email}}</span>
-        </dd>
         <dt><span data-translate="epressingApp.utilisateur.user">User</span></dt>
         <dd>
             {{vm.utilisateur.user.id}}
-        </dd>
-        <dt><span data-translate="epressingApp.utilisateur.type">Type</span></dt>
-        <dd>
-            <a ui-sref="type-utilisateur-detail({id:vm.utilisateur.type.id})">{{vm.utilisateur.type.id}}</a>
         </dd>
     </dl>
 

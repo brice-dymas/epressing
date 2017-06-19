@@ -20,15 +20,22 @@
         ])
         .run(run);
 
-    run.$inject = ['stateHandler', 'translationHandler','$rootScope'];
+    run.$inject = ['stateHandler', 'translationHandler','$localStorage', '$rootScope'];
 
-    function run(stateHandler, translationHandler,$rootScope) {
+    function run(stateHandler, translationHandler,$localStorage, $rootScope) {
         stateHandler.initialize();
         translationHandler.initialize(); 
-        console.log('Creation de l\'objet Global commandeForm')  
-        $rootScope.commandeForm = {
+
+        $rootScope.commandeForm = $localStorage.commandeForm;
+        $rootScope.userConnected = $localStorage.userConnected;
+        if ($rootScope.userConnected == null) {
+            $rootScope.userConnected = {};
+        }
+        if ($rootScope.commandeForm == null) {
+            $rootScope.commandeForm = {
                 'commande': null,
                 'ligneCommandes': []
             };
+        }
     }
 })();

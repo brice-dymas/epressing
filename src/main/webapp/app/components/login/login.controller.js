@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
+    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance', 'Principal','$localStorage'];
 
-    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance) {
+    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance, Principal, $localStorage) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -31,7 +31,12 @@
             vm.authenticationError = false;
             $uibModalInstance.dismiss('cancel');
         }
-
+        function setUserConnected(){
+            Principal.identity().then(function(user){
+                //$rootScope.userConnected = user;
+                $localStorage.userConnected = user;
+            });
+        }
         function login (event) {
             event.preventDefault();
             Auth.login({
@@ -40,6 +45,7 @@
                 rememberMe: vm.rememberMe
             }).then(function () {
                 vm.authenticationError = false;
+                setUserConnected();
                 $uibModalInstance.close();
                 if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                     $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {

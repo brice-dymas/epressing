@@ -25,14 +25,6 @@ public class Utilisateur implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "nom", nullable = false)
-    private String nom;
-
-    @NotNull
-    @Column(name = "prenom", nullable = false)
-    private String prenom;
-
-    @NotNull
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
@@ -40,15 +32,9 @@ public class Utilisateur implements Serializable {
     @Column(name = "telephone", nullable = false)
     private String telephone;
 
-    @Column(name = "email")
-    private String email;
-
     @OneToOne
     @JoinColumn(unique = true)
     private User user;
-
-    @ManyToOne
-    private TypeUtilisateur type;
 
     public Long getId() {
         return id;
@@ -56,32 +42,6 @@ public class Utilisateur implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public Utilisateur nom(String nom) {
-        this.nom = nom;
-        return this;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public Utilisateur prenom(String prenom) {
-        this.prenom = prenom;
-        return this;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public String getAdresse() {
@@ -110,19 +70,6 @@ public class Utilisateur implements Serializable {
         this.telephone = telephone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public Utilisateur email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public User getUser() {
         return user;
     }
@@ -134,19 +81,6 @@ public class Utilisateur implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public TypeUtilisateur getType() {
-        return type;
-    }
-
-    public Utilisateur type(TypeUtilisateur typeUtilisateur) {
-        this.type = typeUtilisateur;
-        return this;
-    }
-
-    public void setType(TypeUtilisateur typeUtilisateur) {
-        this.type = typeUtilisateur;
     }
 
     @Override
@@ -173,11 +107,8 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "Utilisateur{" +
             "id=" + id +
-            ", nom='" + nom + "'" +
-            ", prenom='" + prenom + "'" +
             ", adresse='" + adresse + "'" +
             ", telephone='" + telephone + "'" +
-            ", email='" + email + "'" +
             '}';
     }
 }

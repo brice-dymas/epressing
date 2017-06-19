@@ -103,6 +103,22 @@ public class CommandeResource {
     }
 
     /**
+     * GET  /commandes : get all the commandes.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of commandes in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/commandes/user/{id}")
+    @Timed
+    public ResponseEntity<List<Commande>> getAllCommandsOfCurrentUser(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Commandes of current user with id : {} ", id);
+        Page<Commande> page = commandeService.findByUserIsCurrentUser(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/commandes/user/{id}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    /**
      * GET  /commandes/:id : get the "id" commande.
      *
      * @param id the id of the commande to retrieve

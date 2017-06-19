@@ -1,0 +1,57 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> 
+        <span data-translate="settings.title" translate-values="{username: '{{vm.settingsAccount.login}}'}">Setiings</span></h1>
+</div>
+<div class="col-md-12">
+    <div class="row">    
+        <div class="col-sm-12 col-xs-12" style="margin-top: 15px;">    
+            <jhi-alert></jhi-alert>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row wrapper">
+        <div class="col-md-9 col-md-offset-2">
+            <div class="panel panel-default">
+  <h2> Mon Profil</h2>
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <tbody>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="settings.form.lastName">Last Name</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.user.lastName}}</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="settings.form.firstName">Fist Name</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.user.firstName}}</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="global.form.email.placeholder">Email</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.user.email}}</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="settings.form.language">Language</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.user.langKey}}</h5></td>
+                            </tr>
+                             <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="epressingApp.utilisateur.adresse">Adresse</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.adresse}}</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="border-width: 0;  border-color: transparent;"><h5><span data-translate="epressingApp.utilisateur.telephone">telephone</span>:</h5></td>
+                                <td class="text-left" style="border-width: 0;  border-color: transparent;"><h5>{{vm.utilisateur.telephone}}</h5></td>
+                            </tr>
+                        </tbody>
+                    </table>
+        
+                </div>
+                <div class="panel-footer text-center">
+             <button type="button" ui-sref="userProfileEdit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span>
+                <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+            </button>     
+                </div>
+            </div>                     
+    </div>
+    </div>
+</div>

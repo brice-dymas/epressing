@@ -10,9 +10,9 @@
         $stateProvider
         .state('produit', {
             parent: 'entity',
-            url: '/produits/produitsTarifs?page&sort&search',
+            url: '/produits/?page&sort&search',
             data: {
-                //authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'epressingApp.produit.home.title'
             },
             views: {
@@ -52,9 +52,10 @@
         })
         .state('produit-detail', {
             parent: 'produit',
-            url: '/{id}',
+            url: '{id}/tarifs',
             data: {
-                authorities: ['ROLE_USER'],
+                //authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'epressingApp.produit.detail.title'
             },
             views: {
@@ -90,7 +91,8 @@
             parent: 'produit-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                //authorities: ['ROLE_ADMIN']
+                authorities: []
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -114,7 +116,8 @@
             parent: 'produit-detail',
             url: '/detail/addTarif',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: []
+               // authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -144,7 +147,7 @@
             parent: 'produit',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -174,6 +177,7 @@
             parent: 'produit-detail', 
             url: '/addToCart/{idTarif}',
             data: {
+                authorities: []
                 //authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal','$rootScope', function($stateParams, $state, $uibModal,$rootScope) {
@@ -220,59 +224,11 @@
                 });
             }]
         })
-        /*.state('produit.addToCart', {
-            parent: 'produit',
-            url: '/addToCart/{id}',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal','$rootScope', function($stateParams, $state, $uibModal,$rootScope) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/produit/produit-addToCart.html',
-                    controller: 'ProduitAddToCartController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {                            
-                                id: null,
-                                quantite: null,
-                                etat: null,
-                                tarif: 0,
-                                produit: {
-                                    id:null,
-                                    libelle:null,
-                                    photo:null
-                                },
-                                commande: {},
-                                operation:{ 
-                                    id:null,
-                                    libelle: null,
-                                    description: null
-                                },
-                                caracteristique: {
-                                    id: null,
-                                    couleur: null,
-                                    marque: null,
-                                    libelle: null
-                                }
-                            };
-                        },
-                        
-                    }
-                }).result.then(function() {
-                    $state.go('produit', null, { reload: 'produit' });
-                }, function() {
-                    $state.go('produit');
-                });
-            }]
-        })*/
         .state('produit.edit', {
             parent: 'produit',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -297,7 +253,7 @@
             parent: 'produit',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

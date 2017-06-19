@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('ProduitAddToCartController', ProduitAddToCartController);
 
-    ProduitAddToCartController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', '$rootScope','entity', 'Produit','Caracteristique', 'LigneCommande', 'Operation', 'Tarif', 'usedTarif'];
+    ProduitAddToCartController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', '$rootScope','entity', 'Produit','Caracteristique', 'LigneCommande',  'usedTarif', '$localStorage'];
 
-    function ProduitAddToCartController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, $rootScope, entity,Produit,Caracteristique, LigneCommande, Operation, Tarif, usedTarif)  {
+    function ProduitAddToCartController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, $rootScope, entity,Produit,Caracteristique, LigneCommande, usedTarif, $localStorage)  {
         var vm = this;
         vm.ligneCommande = entity;  
         console.log(usedTarif);
@@ -31,6 +31,7 @@
             vm.ligneCommande.etat= 'En attente';
                 console.log(vm.ligneCommande);
                 $scope.commandeForm.ligneCommandes.push(vm.ligneCommande);
+                $localStorage.commandeForm = $scope.commandeForm;
                 $uibModalInstance.close(true);
         };
  }

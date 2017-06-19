@@ -36,23 +36,25 @@
                 </div>
                                                              
             </div>
-            <div class="row">
-                
-                <div class="col-md-4">
+            <div class="row">                
+                <div class="col-md-6">
                     <span data-translate="epressingApp.produit.addToCart.caracteristique.couleur">Couleur</span>
                      <input type="text" class="form-control" name="libelle" id="field_libelle"
                         ng-model="vm.ligneCommande.caracteristique.couleur"
                         required/>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <span data-translate="epressingApp.produit.addToCart.caracteristique.marque">Marque</span>
                      <input type="text" class="form-control" name="libelle" id="field_libelle"
                         ng-model="vm.ligneCommande.caracteristique.marque"
                         required/>
-                </div>
-                <div class="col-md-4">
+                </div>                                      
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-9">
                     <span data-translate="epressingApp.produit.addToCart.caracteristique.libelle">Détails</span>
-                     <input type="text" class="form-control" name="libelle" id="field_libelle"
+                     <textarea rows="4" class="form-control" name="libelle" id="field_libelle"
                         ng-model="vm.ligneCommande.caracteristique.libelle"
                         />
                 </div>

@@ -27,9 +27,9 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="epressingApp.operation.description" for="field_description">Description</label>
-            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:100px;max-height:100px" name="description" id="field_description"  ng-model="vm.operation.description">
-              Go ahead&hellip;
-            </div>
+            <textarea type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.operation.description"
+                    required/>
         </div>
 
     </div>

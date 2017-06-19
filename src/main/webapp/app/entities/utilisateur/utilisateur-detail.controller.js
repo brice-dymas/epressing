@@ -5,9 +5,9 @@
         .module('epressingApp')
         .controller('UtilisateurDetailController', UtilisateurDetailController);
 
-    UtilisateurDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Utilisateur', 'User', 'TypeUtilisateur'];
+    UtilisateurDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Utilisateur', 'User'];
 
-    function UtilisateurDetailController($scope, $rootScope, $stateParams, previousState, entity, Utilisateur, User, TypeUtilisateur) {
+    function UtilisateurDetailController($scope, $rootScope, $stateParams, previousState, entity, Utilisateur, User) {
         var vm = this;
 
         vm.utilisateur = entity;

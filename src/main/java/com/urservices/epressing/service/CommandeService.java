@@ -27,6 +27,15 @@ public interface CommandeService {
     Page<Commande> findAll(Pageable pageable);
 
     /**
+     *  Get all the commandes of the connected user.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    /*Page<Commande> findByUserIsCurrentUser(Pageable pageable);*/
+    Page<Commande> findByUserIsCurrentUser(long id, Pageable pageable);
+
+    /**
      *  Get the "id" commande.
      *
      *  @param id the id of the entity
